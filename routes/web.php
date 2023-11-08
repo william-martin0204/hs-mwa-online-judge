@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Problem;
 use App\Http\Controllers\Welcome;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [Welcome::class, 'welcome']);
+
+Route::get('problems', [Problem::class, 'index'])->name('problems.index');
