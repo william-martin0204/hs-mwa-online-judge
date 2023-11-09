@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Problem;
-use App\Http\Controllers\Welcome;
-use App\Http\Controllers\Submission;
+use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Welcome::class, 'welcome'])->name('welcome.index');
+Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome.index');
 
-Route::get('problems', [Problem::class, 'index'])->name('problems.index');
+Route::get('problems', [ProblemController::class, 'index'])->name('problems.index');
 
-Route::get('submissions', [Submission::class, 'index'])->name('submissions.index');
+Route::get('submissions', [SubmissionController::class, 'index'])->name('submissions.index');
