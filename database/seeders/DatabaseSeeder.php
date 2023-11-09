@@ -18,6 +18,13 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
         \App\Models\Problem::factory(10)->create();
 
+        // Create 2 languages: C++ and Python. Only the name is used.
+        DB::table('languages')->insert([
+            ['name' => 'C++', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Python', 'created_at' => now(), 'updated_at' => now()],
+        ]);
+
         \App\Models\Submission::factory(50)->create();
+
     }
 }
