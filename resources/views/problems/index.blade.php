@@ -16,8 +16,12 @@
                 @foreach ($problems as $problem)
                     <tr class="hover:bg-grey-lighter">
                         <td class="py-4 px-6 border-b border-grey-light">N/A</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$problem->id}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$problem->title}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light underline font-bold">
+                            <a href="{{route('problems.show', $problem->id)}}">{{$problem->id}}</a>
+                        </td>
+                        <td class="py-4 px-6 border-b border-grey-light underline font-bold">
+                            <a href="{{route('problems.show', $problem->id)}}">{{$problem->title}}</a>
+                        </td>
                         <td class="py-4 px-6 border-b border-grey-light">N/A</td>
                     </tr>
                 @endforeach

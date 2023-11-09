@@ -20,7 +20,9 @@
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->id}}</td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->user->name}}</td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->language}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$submission->problem->title}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light underline font-bold">
+                            <a href="{{route('problems.show', $submission->problem->id)}}">{{$submission->problem->title}}</a>
+                        </td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->status}}</td>
                         <td class="py-4 px-6 border-b border-grey-light">See Code</td>
                     </tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Problem;
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
@@ -11,10 +12,19 @@ class ProblemController extends Controller
      */
     public function index()
     {
-        $problems = \App\Models\Problem::all();
+        $problems = Problem::all();
 
         return view('problems.index', [
             'problems' => $problems,
+        ]);
+    }
+
+    public function show($id) {
+
+        $problem = Problem::find($id);
+
+        return view('problems.show', [
+            'problem' => $problem,
         ]);
     }
 }
