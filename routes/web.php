@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Welcome::class, 'welcome']);
+Route::get('/', [Welcome::class, 'welcome'])->name('welcome.index');
 
 Route::get('problems', [Problem::class, 'index'])->name('problems.index');
 

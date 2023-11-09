@@ -6,9 +6,8 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class SiteLayoutNavbarMobile extends Component
+class SiteLayoutNavbarDesktop extends Component
 {
-
     public array $menu_items;
 
     /**
@@ -20,8 +19,6 @@ class SiteLayoutNavbarMobile extends Component
             ['label' => 'Welcome', 'route' => 'welcome.index'],
             ['label' => 'Problems', 'route' => 'problems.index'],
             ['label' => 'Submissions', 'route' => 'submissions.index'],
-            // ['label' => 'My Account', 'route' => null],
-            // ['label' => 'Sign Out', 'route' => null],
         ];
     }
 
@@ -30,6 +27,6 @@ class SiteLayoutNavbarMobile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.site-layout-navbar-mobile');
+        return view('components.site-layout-navbar-desktop');
     }
 }

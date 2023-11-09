@@ -31,7 +31,7 @@
             </button>
         </div>
 
-        <x-site-layout-navbar />
+        <x-site-layout-navbar-desktop />
     </aside>
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
