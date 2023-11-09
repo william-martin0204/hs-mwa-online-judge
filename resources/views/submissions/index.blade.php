@@ -19,9 +19,9 @@
                     <tr class="hover:bg-grey-lighter">
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->id}}</td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->user_id}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$submission->language_id}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$submission->language}}</td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->problem_id}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$submission->accepted ? 'ACCEPTED' : 'WRONG'}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$submission->status}}</td>
                         <td class="py-4 px-6 border-b border-grey-light">See Code</td>
                     </tr>
                 @endforeach

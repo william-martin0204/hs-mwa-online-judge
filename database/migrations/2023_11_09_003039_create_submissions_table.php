@@ -16,8 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('language_id');
             $table->foreignId('problem_id');
-            $table->boolean('accepted');
             $table->text('code');
+            $table->string('language');
+            $table->string('status');
             $table->timestamps();
         });
     }
