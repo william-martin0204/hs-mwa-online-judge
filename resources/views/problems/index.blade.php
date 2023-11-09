@@ -7,8 +7,7 @@
             <thead>
                 <tr>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Status</th>
-                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">ID</th>
-                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Title</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Problem</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Tags</th>
                 </tr>
             </thead>
@@ -17,10 +16,7 @@
                     <tr class="hover:bg-grey-lighter">
                         <td class="py-4 px-6 border-b border-grey-light">N/A</td>
                         <td class="py-4 px-6 border-b border-grey-light underline font-bold">
-                            <a href="{{route('problems.show', $problem->id)}}">{{$problem->id}}</a>
-                        </td>
-                        <td class="py-4 px-6 border-b border-grey-light underline font-bold">
-                            <a href="{{route('problems.show', $problem->id)}}">{{$problem->title}}</a>
+                            <a href="{{route('problems.show', $problem->id)}}">{{$problem->id}} - {{$problem->title}}</a>
                         </td>
                         <td class="py-4 px-6 border-b border-grey-light">N/A</td>
                     </tr>
