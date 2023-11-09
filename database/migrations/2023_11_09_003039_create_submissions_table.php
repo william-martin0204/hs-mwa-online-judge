@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('language_id');
             $table->foreignId('problem_id');
             $table->text('code');
             $table->string('language');
