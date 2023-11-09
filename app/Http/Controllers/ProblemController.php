@@ -21,7 +21,7 @@ class ProblemController extends Controller
 
     public function show($id) {
 
-        $problem = Problem::find($id);
+        $problem = Problem::findorFail($id);
 
         return view('problems.show', [
             'problem' => $problem,
