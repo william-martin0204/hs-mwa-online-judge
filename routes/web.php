@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Problem;
 use App\Http\Controllers\Welcome;
+use App\Http\Controllers\Submission;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Welcome::class, 'welcome']);
 
 Route::get('problems', [Problem::class, 'index'])->name('problems.index');
+
+Route::get('submissions', [Submission::class, 'index'])->name('submissions.index');
