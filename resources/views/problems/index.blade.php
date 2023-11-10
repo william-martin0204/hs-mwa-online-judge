@@ -18,7 +18,11 @@
                         <td class="py-4 px-6 border-b border-grey-light underline font-bold">
                             <a href="{{route('problems.show', $problem->id)}}">{{$problem->id}} - {{$problem->title}}</a>
                         </td>
-                        <td class="py-4 px-6 border-b border-grey-light">N/A</td>
+                        <td class="py-4 px-6 border-b border-grey-light">
+                            <span class="bg-blue-100 p-1 rounded-lg">
+                                {{$problem->tag->name}}
+                            </span>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

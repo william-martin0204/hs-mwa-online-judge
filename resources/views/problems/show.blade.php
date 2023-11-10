@@ -2,6 +2,12 @@
     <h1 class="text-4xl font-extrabold my-5">{{$problem->id}} - {{$problem->title}}</h1>
 
     <div>
+        <span class="bg-blue-100 p-1 rounded-lg">
+            {{$problem->tag->name}}
+        </span>
+    </div>
+
+    <div>
         <h2 class="text-2xl font-bold my-5">Description</h2>
         <p>{{$problem->description}}</p>
 
