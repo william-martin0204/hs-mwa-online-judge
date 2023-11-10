@@ -17,6 +17,7 @@ class ProblemFactory extends Factory
     public function definition(): array
     {
         return [
+            'tag_id' => fake()->randomElement([1, 2, 3, 4, 5]),
             'title' => fake()->sentence(5, true),
             'description' => fake()->paragraph(3, true),
             'example_input' => fake()->sentence(8, true),

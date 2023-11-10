@@ -13,4 +13,8 @@ class Problem extends Model
     {
         return $this->hasMany(Submission::class);
     }
+
+    public function tag() {
+        return $this->belongsTo(Tag::class);
+    }
 }
