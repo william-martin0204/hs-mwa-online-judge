@@ -21,7 +21,9 @@ class ProblemController extends Controller
 
     public function show($id) {
 
-        $problem = Problem::findorFail($id);
+        $problem = Problem::query()
+            ->where('id', $id)
+            ->firstorFail();
 
         return view('problems.show', [
             'problem' => $problem,

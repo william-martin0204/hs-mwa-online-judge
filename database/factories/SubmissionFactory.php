@@ -19,7 +19,7 @@ class SubmissionFactory extends Factory
         return [
             'user_id' => $this->faker->numberBetween(1, 10),
             'problem_id' => $this->faker->numberBetween(1, 10),
-            'code' => $this->faker->text(),
+            'code' => $this->faker->text(2000),
             'language' => $this->faker->randomElement(['C++', 'Python', 'Javascript']),
             'status' => $this->faker->randomElement([
                 'Accepted',

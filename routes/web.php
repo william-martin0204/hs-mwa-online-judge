@@ -22,3 +22,4 @@ Route::get('problems', [ProblemController::class, 'index'])->name('problems.inde
 Route::get('problems/{id}', [ProblemController::class, 'show'])->name('problems.show');
 
 Route::get('submissions', [SubmissionController::class, 'index'])->name('submissions.index');
+Route::get('submissions/{id}', [SubmissionController::class, 'show'])->name('submissions.show');

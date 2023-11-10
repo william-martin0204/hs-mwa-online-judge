@@ -24,7 +24,9 @@
                             <a href="{{route('problems.show', $submission->problem->id)}}">{{$submission->problem->title}}</a>
                         </td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->status}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">See Code</td>
+                        <td class="py-4 px-6 border-b border-grey-light underline font-bold">
+                            <a href="{{route('submissions.show', $submission->id)}}">See Code</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
