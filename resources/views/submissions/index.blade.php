@@ -23,7 +23,9 @@
                         <td class="py-4 px-6 border-b border-grey-light underline font-bold">
                             <a href="{{route('problems.show', $submission->problem->id)}}">{{$submission->problem->id}} - {{$submission->problem->title}}</a>
                         </td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$submission->status}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light font-bold text-{{$submission->status == 'Accepted' ? 'green' : 'red'}}-500">
+                            {{$submission->status}}
+                        </td>
                         <td class="py-4 px-6 border-b border-grey-light underline font-bold">
                             <a href="{{route('submissions.show', $submission->id)}}">See Code</a>
                         </td>

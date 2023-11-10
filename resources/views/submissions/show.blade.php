@@ -6,7 +6,7 @@
         </a>
     </h2>
 
-    <div class="text-xl mt-3 text {{$submission->status == 'Accepted' ? 'bg-green-500' : 'bg-red-500'}} rounded-lg font-bold text-white inline-block p-1">
+    <div class="text-xl mt-3 text bg-{{$submission->status == 'Accepted' ? 'green' : 'red'}}-500 rounded-lg font-bold text-white inline-block p-1">
         {{$submission->status}}
     </div>
 
