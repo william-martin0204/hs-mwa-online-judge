@@ -31,7 +31,7 @@
             </button>
         </div>
 
-        <x-site-layout-navbar-desktop />
+        <x-site-layout-navbar />
     </aside>
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
@@ -60,7 +60,7 @@
                 </button>
             </div>
 
-            <x-site-layout-navbar-mobile />
+            <x-site-layout-navbar mobile />
             <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
             </button> -->

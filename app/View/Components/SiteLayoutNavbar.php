@@ -6,23 +6,25 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class SiteLayoutNavbarMobile extends Component
+class SiteLayoutNavbar extends Component
 {
-
     public array $menu_items;
 
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(bool $mobile = false)
     {
         $this->menu_items = [
             ['label' => 'Welcome', 'route' => 'welcome.index'],
             ['label' => 'Problems', 'route' => 'problems.index'],
             ['label' => 'Submissions', 'route' => 'submissions.index'],
-            // ['label' => 'My Account', 'route' => null],
-            // ['label' => 'Sign Out', 'route' => null],
         ];
+
+        // if ($mobile) {
+        //     $this->menu_items[] = ['label' => 'My Account', 'route' => null];
+        //     $this->menu_items[] = ['label' => 'Sign Out', 'route' => null];
+        // }
     }
 
     /**
@@ -30,6 +32,6 @@ class SiteLayoutNavbarMobile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.site-layout-navbar-mobile');
+        return view('components.site-layout-navbar');
     }
 }

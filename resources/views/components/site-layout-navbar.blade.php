@@ -1,4 +1,4 @@
-<nav class="text-white text-base font-semibold pt-3">
+<nav :class="isOpen ? '': 'hidden'" class="text-white text-base font-semibold pt-3">
 
     @foreach ($menu_items as $item)
 
