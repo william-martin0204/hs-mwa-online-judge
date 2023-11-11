@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Submission;
-use Illuminate\Http\Request;
 
 class SubmissionController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
         $submissions = Submission::all();
 
@@ -16,7 +16,8 @@ class SubmissionController extends Controller
         ]);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
 
         $submission = Submission::query()
             ->where('id', $id)

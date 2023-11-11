@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class TagSticker extends Component
 {
     public string $index;
+
     public string $name;
 
     /**
