@@ -3,9 +3,7 @@
 
     <div>
         @foreach ($problem->tags as $tag)
-            <span class="bg-blue-100 mx-1 p-1 rounded-lg">
-                {{$tag->name}}
-            </span>
+            <x-tag-sticker index="{{$tag->id}}" name="{{$tag->name}}" />
         @endforeach
     </div>
 
