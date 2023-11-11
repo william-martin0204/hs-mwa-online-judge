@@ -19,9 +19,12 @@
                             <a href="{{route('problems.show', $problem->id)}}">{{$problem->id}} - {{$problem->title}}</a>
                         </td>
                         <td class="py-4 px-6 border-b border-grey-light">
-                            <span class="bg-blue-100 p-1 rounded-lg">
-                                {{$problem->tag->name}}
-                            </span>
+
+                            @foreach ($problem->tags as $tag)
+                                <span class="bg-blue-100 mx-1 p-1 rounded-lg">
+                                    {{$tag->name}}
+                                </span>
+                            @endforeach
                         </td>
                     </tr>
                 @endforeach

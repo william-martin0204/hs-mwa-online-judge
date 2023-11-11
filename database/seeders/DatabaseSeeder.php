@@ -16,8 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         \App\Models\User::factory(10)->create();
-        \App\Models\Problem::factory(10)->create();
+        $problems = \App\Models\Problem::factory(10)->create();
         \App\Models\Submission::factory(50)->create();
-        \App\Models\Tag::factory(5)->create();
+        $tags = \App\Models\Tag::factory(5)->create();
+
+        foreach ($problems as $problem) {
+            $problem->tags()->attach($tags->random(rand(1, 3))->pluck('id')->toArray());
+        }
     }
 }

@@ -11,6 +11,6 @@ class Tag extends Model
 
     public function problems()
     {
-        return $this->hasMany(Problem::class);
+        return $this->belongsToMany(Problem::class);
     }
 }

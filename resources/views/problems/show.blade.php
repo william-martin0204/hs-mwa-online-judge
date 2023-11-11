@@ -2,9 +2,11 @@
     <h1 class="text-4xl font-extrabold my-5">{{$problem->id}} - {{$problem->title}}</h1>
 
     <div>
-        <span class="bg-blue-100 p-1 rounded-lg">
-            {{$problem->tag->name}}
-        </span>
+        @foreach ($problem->tags as $tag)
+            <span class="bg-blue-100 mx-1 p-1 rounded-lg">
+                {{$tag->name}}
+            </span>
+        @endforeach
     </div>
 
     <div>
