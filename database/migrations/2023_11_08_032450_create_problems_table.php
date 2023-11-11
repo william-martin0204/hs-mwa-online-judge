@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('problems', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tag_id');
             $table->string('title');
             $table->text('description');
             $table->text('example_input');
             $table->text('example_output');
-            $table->foreignId('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }
