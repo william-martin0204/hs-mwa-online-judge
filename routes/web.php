@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome.index');
+
+Route::get('tags', [TagController::class, 'index'])->name('tags.index');
 
 Route::get('problems', [ProblemController::class, 'index'])->name('problems.index');
 Route::get('problems/{id}', [ProblemController::class, 'show'])->name('problems.show');

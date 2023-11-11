@@ -19,6 +19,7 @@ class SiteLayoutNavbar extends Component
             ['label' => 'Welcome', 'route' => 'welcome.index'],
             ['label' => 'Problems', 'route' => 'problems.index'],
             ['label' => 'Submissions', 'route' => 'submissions.index'],
+            ['label' => 'Tags', 'route' => 'tags.index'],
         ];
 
         // if ($mobile) {
