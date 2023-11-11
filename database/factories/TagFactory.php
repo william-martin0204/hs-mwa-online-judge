@@ -18,6 +18,7 @@ class TagFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->words(2, true),
+            'description' => $this->faker->paragraph(4),
         ];
     }
 }
