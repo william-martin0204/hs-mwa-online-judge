@@ -18,6 +18,7 @@ class SiteLayoutNavbar extends Component
         $this->menu_items = [
             ['label' => 'Welcome', 'route' => 'welcome.index'],
             ['label' => 'Problems', 'route' => 'problems.index'],
+            ['label' => 'Leaderboard', 'route' => 'leaderboard.index'],
             ['label' => 'Submissions', 'route' => 'submissions.index'],
             ['label' => 'Tags', 'route' => 'tags.index'],
         ];
