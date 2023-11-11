@@ -29,3 +29,4 @@ Route::get('submissions', [SubmissionController::class, 'index'])->name('submiss
 Route::get('submissions/{id}', [SubmissionController::class, 'show'])->name('submissions.show');
 
 Route::get('tags', [TagController::class, 'index'])->name('tags.index');
+Route::get('tags/{id}', [TagController::class, 'show'])->name('tags.show');
