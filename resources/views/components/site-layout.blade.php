@@ -30,10 +30,12 @@
 
         <x-site-layout-navbar />
 
-        <div class="p-6">
-            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                Manage Problems
-            </button>
+        <div class="p-4">
+            <a href="#">
+                <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                    Manage Problems
+                </button>
+            </a>
             <a href={{route('admin.tags.index')}}>
                 <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                     Manage Tags
@@ -71,10 +73,12 @@
             <x-site-layout-navbar mobile />
 
             <div class="flex">
-                <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    Manage Problems
-                </button>
-                <a href={{route('admin.tags.index')}}>
+                <a href="#" class="mr-5">
+                    <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                        Manage Problems
+                    </button>
+                </a>
+                <a href={{route('admin.tags.index')}} class="mr-5">
                     <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                         Manage Tags
                     </button>
