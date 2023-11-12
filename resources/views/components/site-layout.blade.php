@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Admin Template</title>
-    <meta name="author" content="David Grzyb">
+    <title>PROJ - Pro-coder Realm Online Judge</title>
+    <meta name="author" content="Fernando Valdes Garcia">
     <meta name="description" content="">
 
     <!-- Tailwind -->
@@ -49,7 +49,7 @@
         <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
             <div class="w-1/2"></div>
             <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
-                <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
+                <button @click="isOpen = !isOpen" class="realtive text-white font-bold z-10 w-12 h-12 rounded-full overflow-hidden bg-blue-400 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none">
                     FV
                 </button>
                 <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>

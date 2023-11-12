@@ -11,11 +11,8 @@
         <h2 class="text-2xl font-bold my-5">Description</h2>
         <p>{{$problem->description}}</p>
 
-        <h2 class="text-2xl font-bold my-5">Example Input</h2>
-        <p>{{$problem->example_input}}</p>
-
-        <h2 class="text-2xl font-bold my-5">Example Output</h2>
-        <p>{{$problem->example_output}}</p>
+        <x-in-out-area title="Example Input" :value="$problem->example_input" />
+        <x-in-out-area title="Example Output" :value="$problem->example_output" />
     </div>
 
     <div class="my-4">
