@@ -56,7 +56,13 @@ class AdminProblemController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $problem = Problem::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        return view('admin.problems.show', [
+            'problem' => $problem,
+        ]);
     }
 
     /**
