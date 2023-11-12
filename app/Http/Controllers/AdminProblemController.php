@@ -24,7 +24,7 @@ class AdminProblemController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.problems.create');
     }
 
     /**
@@ -32,7 +32,23 @@ class AdminProblemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:3|max:100',
+            'description' => 'required|string',
+            'example_input' => 'required|string',
+            'example_output' => 'required|string',
+        ]);
+
+        $problem = Problem::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'example_input' => $request->input('example_input'),
+            'example_output' => $request->input('example_output'),
+        ]);
+
+        session()->flash('success_notification', "Problem '{$problem->title}' successfully created");
+
+        return redirect()->route('admin.problems.index');
     }
 
     /**

@@ -9,6 +9,13 @@ class Problem extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'example_input',
+        'example_output',
+    ];
+
     public function submissions()
     {
         return $this->hasMany(Submission::class);
