@@ -24,7 +24,7 @@ class AdminTagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
     }
 
     /**
@@ -32,7 +32,17 @@ class AdminTagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'unique:tags', 'min:3', 'max:25'],
+            'description' => ['required', 'string'],
+        ]);
+
+        Tag::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
+
+        return redirect()->route('admin.tags.index');
     }
 
     /**
