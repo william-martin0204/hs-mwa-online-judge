@@ -70,7 +70,13 @@ class AdminProblemController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $problem = Problem::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        return view('admin.problems.edit', [
+            'problem' => $problem,
+        ]);
     }
 
     /**
@@ -78,7 +84,27 @@ class AdminProblemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:3|max:100',
+            'description' => 'required|string',
+            'example_input' => 'required|string',
+            'example_output' => 'required|string',
+        ]);
+
+        $problem = Problem::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        $problem->update([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'example_input' => $request->input('example_input'),
+            'example_output' => $request->input('example_output'),
+        ]);
+
+        session()->flash('success_notification', "Problem '{$problem->title}' successfully updated");
+
+        return redirect()->route('admin.problems.index');
     }
 
     /**
