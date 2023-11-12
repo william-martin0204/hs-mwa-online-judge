@@ -14,9 +14,5 @@
 
     <div class="text-l mt-3 text bg-purple-500 rounded-lg font-bold text-white inline-block p-1">{{$submission->language}}</div>
 
-    <div class="my-5 bg-white border-2 border-black rounded-lg p-5">
-        <code>
-            {{$submission->code}}
-        </code>
-    </div>
+    <x-in-out-area title="Code" :value="$submission->code"></x-in-out-area>
 </x-site-layout>
