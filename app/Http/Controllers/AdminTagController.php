@@ -64,7 +64,13 @@ class AdminTagController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tag = Tag::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        return view('admin.tags.edit', [
+            'tag' => $tag,
+        ]);
     }
 
     /**
@@ -72,7 +78,21 @@ class AdminTagController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'unique:tags', 'min:3', 'max:25'],
+            'description' => ['required', 'string'],
+        ]);
+
+        $tag = Tag::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        $tag->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
+
+        return redirect()->route('admin.tags.index');
     }
 
     /**
