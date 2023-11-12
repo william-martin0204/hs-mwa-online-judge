@@ -40,7 +40,13 @@ class AdminTagController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tag = Tag::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        return view('admin.tags.show', [
+            'tag' => $tag,
+        ]);
     }
 
     /**
