@@ -100,6 +100,12 @@ class AdminTagController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tag = Tag::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        $tag->delete();
+
+        return redirect()->route('admin.tags.index');
     }
 }

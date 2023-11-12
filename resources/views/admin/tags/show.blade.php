@@ -10,11 +10,16 @@
                 Edit
             </button>
         </a>
-        <a href={{route('admin.tags.destroy', $tag->id)}}>
+        <form action={{route('admin.tags.destroy', $tag->id)}} method="POST" class="inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md">Delete</button>
+        </form>
+        {{-- <a href={{route('admin.tags.destroy', $tag->id)}}>
             <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md">
                 Delete
             </button>
-        </a>
+        </a> --}}
     </div>
 
 </x-site-layout>

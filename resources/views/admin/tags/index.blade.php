@@ -20,7 +20,11 @@
             <div>
                 <a href={{route('admin.tags.edit', $tag->id)}} class="underline">Edit</a>
                 &nbsp;|&nbsp;
-                <a href={{route('admin.tags.destroy', $tag->id)}} class="underline">Delete</a>
+                <form action={{route('admin.tags.destroy', $tag->id)}} method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="underline font-bold">Delete</button>
+                </form>
             </div>
         </li>
         @endforeach
