@@ -81,7 +81,7 @@ class AdminTagController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => ['required', 'string', 'unique:tags', 'min:3', 'max:25'],
+            'name' => ['required', 'string', 'unique:tags,name,'.$id, 'min:3', 'max:25'],
             'description' => ['required', 'string'],
         ]);
 
