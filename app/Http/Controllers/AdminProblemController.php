@@ -112,6 +112,14 @@ class AdminProblemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $problem = Problem::query()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        $problem->delete();
+
+        session()->flash('success_notification', "Problem '{$problem->title}' successfully deleted");
+
+        return redirect()->route('admin.problems.index');
     }
 }
