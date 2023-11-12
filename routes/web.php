@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProblemController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProblemController;
@@ -34,5 +35,8 @@ Route::get('tags/{id}', [TagController::class, 'show'])->name('tags.show');
 
 // Authentication required
 Route::name('admin.')->group(function () {
+
+    Route::resource('admin/problems', AdminProblemController::class);
+
     Route::resource('admin/tags', AdminTagController::class);
 });

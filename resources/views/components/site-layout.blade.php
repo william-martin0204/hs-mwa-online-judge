@@ -31,7 +31,7 @@
         <x-site-layout-navbar />
 
         <div class="p-4">
-            <a href="#">
+            <a href={{route('admin.problems.index')}}>
                 <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                     Manage Problems
                 </button>
@@ -73,7 +73,7 @@
             <x-site-layout-navbar mobile />
 
             <div class="flex">
-                <a href="#" class="mr-5">
+                <a href={{route('admin.problems.index')}} class="mr-5">
                     <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                         Manage Problems
                     </button>
