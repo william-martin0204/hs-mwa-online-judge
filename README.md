@@ -9,6 +9,12 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
 ## Installation
 
 1. Clone the repository
+
+    ```bash
+    git clone https://github.com/fvaldes0109/hs-mwa-online-judge.git
+    cd hs-mwa-online-judge
+    ```
+
 2. Install the dependencies
 
     ```bash
@@ -28,17 +34,29 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
     ```
 
+4. Copy the contents of `.env.example` file to `.env`
+
+    ```bash
+    cat .env.example > .env
+    ```
+
+5. Generate the application key
+
+    ```bash
+    ./vendor/bin/sail artisan key:generate
+    # or if you configured the alias:
+    sail artisan key:generate
+    ```
+
 ## Usage
 
 1. Start the containers
 
     ```bash
-    ./vendor/bin/sail up -d
-    # or if you configured the alias:
     sail up -d
     ```
 
-2. Run the migrations
+2. Run the migrations (only the first time)
 
     ```bash
     sail artisan migrate
@@ -47,3 +65,18 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     ```
 
 3. Visit [localhost](http://localhost) in your browser
+
+## Possible problems
+
+- If running the migrations throws **SQLSTATE[HY000] [2002] Connection refused**, go to your `.env` file, set `DB_HOST=mysql` and re-run the migrations.
+
+- If entering [localhost](http://localhost) throws something like:
+
+    >**file_put_contents(/var/www/html/storage/framework/sessions/Vfo6Qs5KzFik2Xc43dEd7LnoLKPR5X2EYPSnu8bW): Failed to open stream: Permission denied**
+
+    go to the terminal and run:
+
+    ```bash
+    chmod -R gu+w storage
+    chmod -R guo+w storage
+    ```
