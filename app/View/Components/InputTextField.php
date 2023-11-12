@@ -10,14 +10,16 @@ class InputTextField extends Component
 {
     public string $name;
     public string $label;
+    public null|string $value;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $label)
+    public function __construct(string $name, string $label, string $value = null)
     {
         $this->name = $name;
         $this->label = $label;
+        $this->value = $value;
     }
 
     /**
