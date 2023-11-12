@@ -9,8 +9,10 @@ use Illuminate\View\Component;
 class InputTextField extends Component
 {
     public string $name;
+
     public string $label;
-    public null|string $value;
+
+    public ?string $value;
 
     /**
      * Create a new component instance.
