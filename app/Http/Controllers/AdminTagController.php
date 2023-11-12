@@ -37,10 +37,12 @@ class AdminTagController extends Controller
             'description' => ['required', 'string'],
         ]);
 
-        Tag::create([
+        $tag = Tag::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
         ]);
+
+        session()->flash('success_notification', "Tag '{$tag->name}' successfully created");
 
         return redirect()->route('admin.tags.index');
     }
@@ -92,6 +94,8 @@ class AdminTagController extends Controller
             'description' => $request->input('description'),
         ]);
 
+        session()->flash('success_notification', "Tag '{$tag->name}' successfully updated");
+
         return redirect()->route('admin.tags.index');
     }
 
@@ -105,6 +109,8 @@ class AdminTagController extends Controller
             ->firstOrFail();
 
         $tag->delete();
+
+        session()->flash('success_notification', "Tag '{$tag->name}' successfully removed");
 
         return redirect()->route('admin.tags.index');
     }

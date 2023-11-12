@@ -2,6 +2,8 @@
 
     <h1 class="text-4xl font-extrabold text-center my-5">Tags</h1>
 
+    <x-success-message />
+
     <div class="mb-5">
         <a href={{route('admin.tags.create')}}>
             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md">
