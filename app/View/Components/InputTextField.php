@@ -14,14 +14,17 @@ class InputTextField extends Component
 
     public ?string $value;
 
+    public string $type;
+
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $label, string $value = null)
+    public function __construct(string $name, string $label, string $value = null, string $type = 'text')
     {
         $this->name = $name;
         $this->label = $label;
         $this->value = $value;
+        $this->type = $type;
     }
 
     /**
