@@ -30,7 +30,7 @@
 
         <x-site-layout-navbar />
 
-        @if (Auth::user() && Auth::user()->is_admin)
+        @if (auth()->check() && Auth::user()->is_admin)
             <div class="p-4">
                 <a href={{route('admin.problems.index')}}>
                     <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
@@ -76,7 +76,7 @@
                         <a href={{route('profile.edit')}} class="block px-4 py-2 account-link hover:text-white">My Account</a>
                         <form action={{route('logout')}} method="POST">
                             @csrf
-                            <input class="bg-white w-full text-left block px-4 py-2 account-link hover:text-white" type="submit" value="Logout" class="w-full text-left">
+                            <button type="submit" class="block px-4 py-2 account-link hover:text-white w-full text-left">Logout</button>
                         </form>
                     </div>
                 </div>
@@ -95,18 +95,35 @@
 
             <x-site-layout-navbar mobile />
 
-            <div class="flex">
-                <a href={{route('admin.problems.index')}} class="mr-5">
-                    <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                        Manage Problems
-                    </button>
-                </a>
-                <a href={{route('admin.tags.index')}} class="mr-5">
-                    <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                        Manage Tags
-                    </button>
-                </a>
-            </div>
+            @if (auth()->check() && Auth::user()->is_admin)
+                <div class="flex">
+                    <a href={{route('admin.problems.index')}} class="mr-5">
+                        <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                            Manage Problems
+                        </button>
+                    </a>
+                    <a href={{route('admin.tags.index')}} class="mr-5">
+                        <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                            Manage Tags
+                        </button>
+                    </a>
+                </div>
+            @endif
+
+            @guest
+                <div class="relative w-1/2 my-2 flex">
+                    <a href="{{route('login')}}" class="mx-1">
+                        <button class="border-2 border-white bg-white hover:bg-gray-100 text-blue-500 font-bold py-2 px-4 rounded">
+                            Login
+                        </button>
+                    </a>
+                    <a href="{{route('register')}}" class="mx-1">
+                        <button class="border-2 border-white hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
+                            Register
+                        </button>
+                    </a>
+                </div>
+            @endguest
         </header>
 
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">

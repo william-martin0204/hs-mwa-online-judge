@@ -23,10 +23,10 @@ class SiteLayoutNavbar extends Component
             ['label' => 'Tags', 'route' => 'tags.index'],
         ];
 
-        // if ($mobile) {
-        //     $this->menu_items[] = ['label' => 'My Account', 'route' => null];
-        //     $this->menu_items[] = ['label' => 'Sign Out', 'route' => null];
-        // }
+        if ($mobile && auth()->check()) {
+            $this->menu_items[] = ['label' => 'My Account', 'route' => 'profile.edit'];
+            $this->menu_items[] = ['label' => 'Logout', 'route' => 'logout'];
+        }
     }
 
     /**
