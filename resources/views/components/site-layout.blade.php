@@ -30,18 +30,20 @@
 
         <x-site-layout-navbar />
 
-        <div class="p-4">
-            <a href={{route('admin.problems.index')}}>
-                <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    Manage Problems
-                </button>
-            </a>
-            <a href={{route('admin.tags.index')}}>
-                <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    Manage Tags
-                </button>
-            </a>
-        </div>
+        @if (Auth::user() && Auth::user()->is_admin)
+            <div class="p-4">
+                <a href={{route('admin.problems.index')}}>
+                    <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                        Manage Problems
+                    </button>
+                </a>
+                <a href={{route('admin.tags.index')}}>
+                    <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                        Manage Tags
+                    </button>
+                </a>
+            </div>
+        @endif
     </aside>
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden">

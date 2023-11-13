@@ -34,11 +34,12 @@ Route::get('submissions/{id}', [SubmissionController::class, 'show'])->name('sub
 Route::get('tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('tags/{id}', [TagController::class, 'show'])->name('tags.show');
 
-// Authentication required
-Route::name('admin.')->group(function () {
 
+// ------------ Authentication required ---------------------------- //
+
+// Admin routes
+Route::name('admin.')->middleware(['auth', 'is.admin'])->group(function () {
     Route::resource('admin/problems', AdminProblemController::class);
-
     Route::resource('admin/tags', AdminTagController::class);
 });
 
