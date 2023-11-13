@@ -1,5 +1,15 @@
 <x-site-layout>
-    <h1 class="text-4xl font-extrabold my-5">{{$problem->id}} - {{$problem->title}}</h1>
+
+    <div class="flex items-center">
+        <h1 class="text-4xl font-extrabold my-5 mr-5">{{$problem->id}} - {{$problem->title}} </h1>
+        @auth
+            @if (Auth::user()->submissions->where('status', 'Accepted')->contains('problem_id', $problem->id))
+                <i class="fas fa-check fa-lg text-green-500"></i>
+            @elseif (Auth::user()->submissions->where('problem_id', $problem->id)->count() > 0)
+                <i class="fas fa-times fa-lg text-red-500"></i>
+            @endif
+        @endauth
+    </div>
 
     <div>
         @foreach ($problem->tags as $tag)

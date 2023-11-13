@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(10)->create();
         $problems = \App\Models\Problem::factory(10)->create();
-        \App\Models\Submission::factory(150)->create();
+        \App\Models\Submission::factory(100)->create();
         $tags = \App\Models\Tag::factory(5)->create();
 
         foreach ($problems as $problem) {

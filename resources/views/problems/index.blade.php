@@ -14,7 +14,15 @@
             <tbody>
                 @foreach ($problems as $problem)
                     <tr class="hover:bg-grey-lighter">
-                        <td class="py-4 px-6 border-b border-grey-light">N/A</td>
+                        <td class="py-4 px-6 border-b border-grey-light">
+                            @auth
+                                @if (Auth::user()->submissions->where('status', 'Accepted')->contains('problem_id', $problem->id))
+                                    <i class="fas fa-check text-green-500"></i>
+                                @elseif (Auth::user()->submissions->where('problem_id', $problem->id)->count() > 0)
+                                    <i class="fas fa-times text-red-500"></i>
+                                @endif
+                            @endauth
+                        </td>
                         <td class="py-4 px-6 border-b border-grey-light underline font-bold">
                             <a href="{{route('problems.show', $problem->id)}}">{{$problem->id}} - {{$problem->title}}</a>
                         </td>
