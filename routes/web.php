@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminProblemController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\WelcomeController;

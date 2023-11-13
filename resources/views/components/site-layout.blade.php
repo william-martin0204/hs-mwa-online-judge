@@ -48,16 +48,37 @@
         <!-- Desktop Header -->
         <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
             <div class="w-1/2"></div>
-            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
-                <button @click="isOpen = !isOpen" class="realtive text-white font-bold z-10 w-12 h-12 rounded-full overflow-hidden bg-blue-400 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none">
-                    FV
-                </button>
-                <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
-                <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">My Account</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+
+            @guest
+                <div class="relative w-1/2 flex justify-end">
+                    <a href="{{route('login')}}" class="mx-1">
+                        <button class="border-2 border-blue-500 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Login
+                        </button>
+                    </a>
+                    <a href="{{route('register')}}" class="mx-1">
+                        <button class="border-2 border-blue-500 hover:bg-gray-100 text-blue-500 font-bold py-2 px-4 rounded">
+                            Register
+                        </button>
+                    </a>
                 </div>
-            </div>
+            @endguest
+
+            @auth
+                <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
+                    <button @click="isOpen = !isOpen" class="realtive text-white font-bold z-10 w-12 h-12 rounded-full overflow-hidden bg-blue-400 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none">
+                        {{Auth::user()->name[0]}}
+                    </button>
+                    <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
+                    <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+                        <a href={{route('profile.edit')}} class="block px-4 py-2 account-link hover:text-white">My Account</a>
+                        <form action={{route('logout')}} method="POST">
+                            @csrf
+                            <input class="bg-white w-full text-left block px-4 py-2 account-link hover:text-white" type="submit" value="Logout" class="w-full text-left">
+                        </form>
+                    </div>
+                </div>
+            @endauth
         </header>
 
         <!-- Mobile Header & Nav -->
