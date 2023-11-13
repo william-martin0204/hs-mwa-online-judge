@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class InOutArea extends Component
 {
     public string $title;
+
     public string $value;
+
     /**
      * Create a new component instance.
      */

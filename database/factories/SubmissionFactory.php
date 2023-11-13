@@ -19,15 +19,15 @@ class SubmissionFactory extends Factory
         return [
             'user_id' => $this->faker->numberBetween(1, 10),
             'problem_id' => $this->faker->numberBetween(1, 10),
-            'code' => "
+            'code' => '
 #include <iostream>
 using namespace std;
 
 int main() {
-    cout << \"Hello World!\\n\";
+    cout << "Hello World!\\n";
     return 0;
 }
-",
+',
             'language' => $this->faker->randomElement(['C++', 'Python', 'Javascript']),
             'status' => $this->faker->randomElement([
                 'Accepted',
