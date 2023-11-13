@@ -7,11 +7,17 @@ use Illuminate\Http\Request;
 
 class SubmissionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
         $submissions = Submission::query()
-            ->orderBy('created_at', 'desc')
+            ->when($request->query('problem_id'), function ($query, $problem_id) {
+                return $query->where('problem_id', $problem_id);
+            })
+            ->when($request->query('status'), function ($query, $status) {
+                return $query->where('status', $status);
+            })
+            ->orderBy('id', 'desc')
             ->get();
 
         return view('submissions.index', [

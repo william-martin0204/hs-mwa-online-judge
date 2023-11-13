@@ -7,6 +7,10 @@
         @endforeach
     </div>
 
+    <div class="my-3 underline font-bold text-blue-600">
+        <a href={{route('submissions.index', ['problem_id' => $problem->id, 'status' => 'Accepted'])}}>All Solutions</a>
+    </div>
+
     <div>
         <h2 class="text-2xl font-bold my-5">Description</h2>
         <p>{{$problem->description}}</p>
