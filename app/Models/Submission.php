@@ -9,6 +9,14 @@ class Submission extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'problem_id',
+        'language',
+        'code',
+        'status',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

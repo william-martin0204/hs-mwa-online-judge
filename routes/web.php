@@ -40,3 +40,5 @@ Route::name('admin.')->group(function () {
 
     Route::resource('admin/tags', AdminTagController::class);
 });
+
+Route::post('submissions', [SubmissionController::class, 'store'])->name('submissions.store');
