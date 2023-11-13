@@ -42,7 +42,9 @@ Route::name('admin.')->group(function () {
     Route::resource('admin/tags', AdminTagController::class);
 });
 
-Route::post('submissions', [SubmissionController::class, 'store'])->name('submissions.store');
+Route::post('submissions', [SubmissionController::class, 'store'])
+    ->middleware('auth')
+    ->name('submissions.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

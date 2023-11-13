@@ -49,7 +49,7 @@ class SubmissionController extends Controller
         $status = $statuses[array_rand($statuses)];
 
         Submission::create([
-            'user_id' => 1, // TEMPORAL UNTIL AUTHENTICATION IS IMPLEMENTED
+            'user_id' => auth()->user()->id,
             'problem_id' => $request->problem_id,
             'language' => $request->language,
             'code' => $request->code,

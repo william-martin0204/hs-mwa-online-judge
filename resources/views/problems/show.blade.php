@@ -31,19 +31,27 @@
 
     <h2 class="text-2xl font-bold my-5">Solution</h2>
 
-    <form action={{route('submissions.store')}} method="POST">
-        @csrf
+    @guest
+        <div class="my-3 underline font-bold text-blue-600">
+            <a href={{route('login')}}>Login to submit a solution</a>
+        </div>
+    @endguest
 
-        <input type="hidden" name="problem_id" value="{{$problem->id}}">
+    @auth
+        <form action={{route('submissions.store')}} method="POST">
+            @csrf
 
-        <select name="language" id="language" class="border-2 rounded-lg p-2 shadow-sm bg-white font-bold my-3">
-            <option value="C++">C++</option>
-            <option value="Python">Python</option>
-            <option value="Javascript">Javascript</option>
-        </select>
+            <input type="hidden" name="problem_id" value="{{$problem->id}}">
 
-        <x-input-textarea-field name="code" label="Your Code Here:" />
+            <select name="language" id="language" class="border-2 rounded-lg p-2 shadow-sm bg-white font-bold my-3">
+                <option value="C++">C++</option>
+                <option value="Python">Python</option>
+                <option value="Javascript">Javascript</option>
+            </select>
 
-        <button type="submit" class="border-2 rounded-lg p-2 shadow-sm bg-blue-500 hover:bg-blue-700 text-white font-bold my-3">Submit</button>
-    </form>
+            <x-input-textarea-field name="code" label="Your Code Here:" />
+
+            <button type="submit" class="border-2 rounded-lg p-2 shadow-sm bg-blue-500 hover:bg-blue-700 text-white font-bold my-3">Submit</button>
+        </form>
+    @endauth
 </x-site-layout>
