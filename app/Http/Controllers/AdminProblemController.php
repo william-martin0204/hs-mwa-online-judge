@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Problem;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class AdminProblemController extends Controller
@@ -24,7 +25,11 @@ class AdminProblemController extends Controller
      */
     public function create()
     {
-        return view('admin.problems.create');
+        $tags = Tag::all();
+
+        return view('admin.problems.create', [
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -34,6 +39,7 @@ class AdminProblemController extends Controller
     {
         $request->validate([
             'title' => 'required|string|min:3|max:100',
+            'tags' => 'required|array',
             'description' => 'required|string',
             'example_input' => 'required|string',
             'example_output' => 'required|string',
@@ -45,6 +51,8 @@ class AdminProblemController extends Controller
             'example_input' => $request->input('example_input'),
             'example_output' => $request->input('example_output'),
         ]);
+
+        $problem->tags()->attach(array_keys($request->input('tags')));
 
         session()->flash('success_notification', "Problem '{$problem->title}' successfully created");
 
