@@ -11,7 +11,9 @@ class ProblemController extends Controller
      */
     public function index()
     {
-        $problems = Problem::all();
+        $problems = Problem::query()
+            ->with('tags')
+            ->get();
 
         return view('problems.index', [
             'problems' => $problems,
