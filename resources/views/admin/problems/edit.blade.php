@@ -6,6 +6,7 @@
         @method('PUT')
 
         <x-input-text-field name="title" label="Title" :value="$problem->title"/>
+        <x-tag-selector :tags="$tags" :currenttags="$problem->tags"/>
         <x-input-textarea-field name="description" label="Description" :value="$problem->description"/>
         <x-input-textarea-field name="example_input" label="Example Input" :value="$problem->example_input"/>
         <x-input-textarea-field name="example_output" label="Example Output" :value="$problem->example_output"/>

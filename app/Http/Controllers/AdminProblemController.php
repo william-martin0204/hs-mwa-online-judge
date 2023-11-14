@@ -39,7 +39,7 @@ class AdminProblemController extends Controller
     {
         $request->validate([
             'title' => 'required|string|min:3|max:100',
-            'tags' => 'required|array',
+            'tags' => 'array',
             'description' => 'required|string',
             'example_input' => 'required|string',
             'example_output' => 'required|string',
@@ -52,7 +52,7 @@ class AdminProblemController extends Controller
             'example_output' => $request->input('example_output'),
         ]);
 
-        $problem->tags()->attach(array_keys($request->input('tags')));
+        $problem->tags()->attach($request->input('tags') ?? []);
 
         session()->flash('success_notification', "Problem '{$problem->title}' successfully created");
 
@@ -82,8 +82,11 @@ class AdminProblemController extends Controller
             ->where('id', $id)
             ->firstOrFail();
 
+        $tags = Tag::all();
+
         return view('admin.problems.edit', [
             'problem' => $problem,
+            'tags' => $tags,
         ]);
     }
 
@@ -109,6 +112,8 @@ class AdminProblemController extends Controller
             'example_input' => $request->input('example_input'),
             'example_output' => $request->input('example_output'),
         ]);
+
+        $problem->tags()->sync($request->input('tags') ?? []);
 
         session()->flash('success_notification', "Problem '{$problem->title}' successfully updated");
 
