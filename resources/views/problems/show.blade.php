@@ -17,8 +17,9 @@
         @endforeach
     </div>
 
-    <div class="my-3 underline font-bold text-blue-600">
-        <a href={{route('submissions.index', ['problem_id' => $problem->id, 'status' => 'Accepted'])}}>All Solutions</a>
+    <div class="my-3 font-bold text-blue-600">
+        <a class="m-2 underline" href={{route('submissions.index', ['problem_id' => $problem->id, 'status' => 'Accepted'])}}>All Solutions</a>
+        <a class="m-2 underline" href={{route('submissions.index', ['problem_id' => $problem->id, 'user_id' => auth()->user()->id])}}>My Submissions</a>
     </div>
 
     <div>

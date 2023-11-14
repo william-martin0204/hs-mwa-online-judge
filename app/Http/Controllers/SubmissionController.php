@@ -17,6 +17,9 @@ class SubmissionController extends Controller
             ->when($request->query('status'), function ($query, $status) {
                 return $query->where('status', $status);
             })
+            ->when($request->query('user_id'), function ($query, $user_id) {
+                return $query->where('user_id', $user_id);
+            })
             ->with(['user', 'problem'])
             ->orderBy('id', 'desc')
             ->get();
