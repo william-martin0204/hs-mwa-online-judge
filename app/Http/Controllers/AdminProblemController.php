@@ -38,11 +38,11 @@ class AdminProblemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|min:3|max:100',
-            'tags' => 'array',
-            'description' => 'required|string',
-            'example_input' => 'required|string',
-            'example_output' => 'required|string',
+            'title' => ['required', 'string', 'unique:problems', 'min:3', 'max:100'],
+            'tags' => ['array'],
+            'description' => ['required', 'string'],
+            'example_input' => ['required', 'string'],
+            'example_output' => ['required', 'string'],
         ]);
 
         $problem = Problem::create([
@@ -96,10 +96,11 @@ class AdminProblemController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title' => 'required|string|min:3|max:100',
-            'description' => 'required|string',
-            'example_input' => 'required|string',
-            'example_output' => 'required|string',
+            'title' => ['required', 'string', 'unique:problems,title,'.$id, 'min:3', 'max:100'],
+            'tags' => ['array'],
+            'description' => ['required', 'string'],
+            'example_input' => ['required', 'string'],
+            'example_output' => ['required', 'string'],
         ]);
 
         $problem = Problem::query()

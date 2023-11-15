@@ -17,7 +17,7 @@ class ProblemFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(5, true),
+            'title' => fake()->unique()->sentence(5, true),
             'description' => fake()->paragraph(3, true),
             'example_input' => fake()->sentence(8, true),
             'example_output' => fake()->sentence(8, true),

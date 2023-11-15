@@ -4,10 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Problem extends Model
 {
     use HasFactory;
+
+    protected static function booted()
+    {
+        static::creating(function ($problem) {
+            $problem->slug = Str::slug($problem->title);
+        });
+    }
 
     protected $fillable = [
         'title',
