@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-        $problems = Problem::factory(50)->create();
-        Submission::factory(500)->create();
+        User::factory(50)->create();
+        $problems = Problem::factory(100)->create();
+        Submission::factory(600)->create();
         $tags = Tag::factory(10)->create();
 
         foreach ($problems as $problem) {

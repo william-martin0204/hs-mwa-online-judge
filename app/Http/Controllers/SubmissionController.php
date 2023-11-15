@@ -22,7 +22,7 @@ class SubmissionController extends Controller
             })
             ->with(['user', 'problem'])
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(20);
 
         return view('submissions.index', [
             'submissions' => $submissions,

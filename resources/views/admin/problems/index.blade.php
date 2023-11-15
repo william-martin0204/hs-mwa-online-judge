@@ -4,6 +4,10 @@
 
     <x-success-message />
 
+    <div class="mb-3">
+        {{$problems->links()}}
+    </div>
+
     <div class="mb-5">
         <a href={{route('admin.problems.create')}}>
             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md">

@@ -13,7 +13,8 @@ class AdminProblemController extends Controller
      */
     public function index()
     {
-        $problems = Problem::all();
+        $problems = Problem::query()
+            ->paginate(20);
 
         return view('admin.problems.index', [
             'problems' => $problems,

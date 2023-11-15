@@ -2,6 +2,10 @@
 
     <h1 class="text-4xl font-extrabold text-center my-5">Submissions</h1>
 
+    <div class="mb-3">
+        {{$submissions->links()}}
+    </div>
+
     <div class="bg-white overflow-auto">
         <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
             <thead>

@@ -13,7 +13,7 @@ class ProblemController extends Controller
     {
         $problems = Problem::query()
             ->with('tags')
-            ->get();
+            ->paginate(20);
 
         return view('problems.index', [
             'problems' => $problems,

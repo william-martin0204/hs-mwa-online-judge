@@ -15,7 +15,7 @@ class LeaderboardController extends Controller
                 ->where('status', 'Accepted');
         }])
             ->orderBy('accepted_problems_count', 'desc')
-            ->get();
+            ->paginate(20);
 
         return view('leaderboard.index', [
             'sorted_users' => $sorted_users,
