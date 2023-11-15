@@ -24,7 +24,7 @@
                             @endauth
                         </td>
                         <td class="py-4 px-6 border-b border-grey-light underline font-bold">
-                            <a href="{{route('problems.show', $problem->id)}}">{{$problem->id}} - {{$problem->title}}</a>
+                            <a href="{{route('problems.show', $problem)}}">{{$problem->id}} - {{$problem->title}}</a>
                         </td>
                         <td class="py-4 px-6 border-b border-grey-light">
 

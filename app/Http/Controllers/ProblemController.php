@@ -20,13 +20,8 @@ class ProblemController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Problem $problem)
     {
-
-        $problem = Problem::query()
-            ->where('id', $id)
-            ->firstorFail();
-
         return view('problems.show', [
             'problem' => $problem,
         ]);

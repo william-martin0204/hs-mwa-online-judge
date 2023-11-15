@@ -8,7 +8,7 @@
 
     <div>
         @foreach ($tag->problems as $problem)
-            <a class="font-bold underline" href="{{route('problems.show', $problem->id)}}">
+            <a class="font-bold underline" href="{{route('problems.show', $problem)}}">
                 {{$problem->id}} - {{$problem->title}}
             </a>
             <br>

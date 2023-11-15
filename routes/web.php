@@ -26,7 +26,7 @@ Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome.index');
 Route::get('leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard.index');
 
 Route::get('problems', [ProblemController::class, 'index'])->name('problems.index');
-Route::get('problems/{id}', [ProblemController::class, 'show'])->name('problems.show');
+Route::get('problems/{problem:slug}', [ProblemController::class, 'show'])->name('problems.show');
 
 Route::get('submissions', [SubmissionController::class, 'index'])->name('submissions.index');
 Route::get('submissions/{id}', [SubmissionController::class, 'show'])->name('submissions.show');
