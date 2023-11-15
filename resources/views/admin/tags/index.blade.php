@@ -15,14 +15,14 @@
     <ul class="grid lg:grid-cols-2 md:grid-cols-2 gap-x-3">
         @foreach ($tags as $tag)
         <li class="bg-white my-2 p-2 font-bold shadow-md flex place-content-between">
-            <a href={{route('admin.tags.show', $tag->id)}} class="underline">
+            <a href={{route('admin.tags.show', $tag)}} class="underline">
                 {{$tag->name}}
             </a>
 
             <div>
-                <a href={{route('admin.tags.edit', $tag->id)}} class="underline">Edit</a>
+                <a href={{route('admin.tags.edit', $tag)}} class="underline">Edit</a>
                 &nbsp;|&nbsp;
-                <form action={{route('admin.tags.destroy', $tag->id)}} method="POST" class="inline">
+                <form action={{route('admin.tags.destroy', $tag)}} method="POST" class="inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="underline font-bold">Delete</button>

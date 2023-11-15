@@ -3,7 +3,7 @@
 
     <div>
         @foreach ($problem->tags as $tag)
-            <x-tag-sticker index="{{$tag->id}}" name="{{$tag->name}}" />
+            <x-tag-sticker :tag="$tag"/>
         @endforeach
     </div>
 

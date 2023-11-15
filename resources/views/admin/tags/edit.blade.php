@@ -2,7 +2,7 @@
 
     <h1 class="text-4xl font-extrabold text-center my-5">Edit Tag: {{$tag->name}}</h1>
 
-    <form action={{route('admin.tags.update', $tag->id)}} method="POST" class="w-5/6 max-w-xl mx-auto">
+    <form action={{route('admin.tags.update', $tag)}} method="POST" class="w-5/6 max-w-xl mx-auto">
         @csrf
         @method('PUT')
 

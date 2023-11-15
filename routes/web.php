@@ -40,7 +40,7 @@ Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show')
 // Admin routes
 Route::name('admin.')->middleware(['auth', 'is.admin'])->group(function () {
     Route::resource('admin/problems', AdminProblemController::class)->parameters(['problems' => 'problem:slug']);
-    Route::resource('admin/tags', AdminTagController::class);
+    Route::resource('admin/tags', AdminTagController::class)->parameters(['tags' => 'tag:slug']);
 });
 
 Route::post('submissions', [SubmissionController::class, 'store'])

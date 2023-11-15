@@ -50,12 +50,8 @@ class AdminTagController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Tag $tag)
     {
-        $tag = Tag::query()
-            ->where('id', $id)
-            ->firstOrFail();
-
         return view('admin.tags.show', [
             'tag' => $tag,
         ]);
@@ -64,12 +60,8 @@ class AdminTagController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tag $tag)
     {
-        $tag = Tag::query()
-            ->where('id', $id)
-            ->firstOrFail();
-
         return view('admin.tags.edit', [
             'tag' => $tag,
         ]);
@@ -78,16 +70,12 @@ class AdminTagController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Tag $tag)
     {
         $request->validate([
-            'name' => ['required', 'string', 'unique:tags,name,'.$id, 'min:3', 'max:25'],
+            'name' => ['required', 'string', 'unique:tags,name,'.$tag->id, 'min:3', 'max:25'],
             'description' => ['required', 'string'],
         ]);
-
-        $tag = Tag::query()
-            ->where('id', $id)
-            ->firstOrFail();
 
         $tag->update([
             'name' => $request->input('name'),
@@ -102,12 +90,8 @@ class AdminTagController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Tag $tag)
     {
-        $tag = Tag::query()
-            ->where('id', $id)
-            ->firstOrFail();
-
         $tag->delete();
 
         session()->flash('success_notification', "Tag '{$tag->name}' successfully removed");
