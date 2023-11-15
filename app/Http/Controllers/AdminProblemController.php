@@ -62,12 +62,8 @@ class AdminProblemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Problem $problem)
     {
-        $problem = Problem::query()
-            ->where('id', $id)
-            ->firstOrFail();
-
         return view('admin.problems.show', [
             'problem' => $problem,
         ]);
@@ -76,12 +72,8 @@ class AdminProblemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Problem $problem)
     {
-        $problem = Problem::query()
-            ->where('id', $id)
-            ->firstOrFail();
-
         $tags = Tag::all();
 
         return view('admin.problems.edit', [
@@ -93,19 +85,15 @@ class AdminProblemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Problem $problem)
     {
         $request->validate([
-            'title' => ['required', 'string', 'unique:problems,title,'.$id, 'min:3', 'max:100'],
+            'title' => ['required', 'string', 'unique:problems,title,'.$problem->id, 'min:3', 'max:100'],
             'tags' => ['array'],
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
             'example_output' => ['required', 'string'],
         ]);
-
-        $problem = Problem::query()
-            ->where('id', $id)
-            ->firstOrFail();
 
         $problem->update([
             'title' => $request->input('title'),
@@ -124,12 +112,8 @@ class AdminProblemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Problem $problem)
     {
-        $problem = Problem::query()
-            ->where('id', $id)
-            ->firstOrFail();
-
         $problem->delete();
 
         session()->flash('success_notification', "Problem '{$problem->title}' successfully deleted");

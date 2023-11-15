@@ -16,12 +16,12 @@
     </div>
 
     <div class="my-4">
-        <a href={{route('admin.problems.edit', $problem->id)}}>
+        <a href={{route('admin.problems.edit', $problem)}}>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md">
                 Edit
             </button>
         </a>
-        <form action={{route('admin.problems.destroy', $problem->id)}} method="POST" class="inline">
+        <form action={{route('admin.problems.destroy', $problem)}} method="POST" class="inline">
             @csrf
             @method('DELETE')
             <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md">Delete</button>
