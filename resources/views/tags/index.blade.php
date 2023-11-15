@@ -5,7 +5,7 @@
         @foreach ($tags as $tag)
 
         <li class="block p-2 shadow-xl bg-white rounded-lg">
-            <a href={{route('tags.show', $tag->id)}} class="h-full block">
+            <a href={{route('tags.show', $tag)}} class="h-full block">
                 <p class="text-xl font-bold">{{ $tag->name }}</p>
                 <p class="font-bold">{{ $tag->problems->count() }} problems</p>
                 <p class="text-gray-500">{{ $tag->description }}</p>

@@ -1,7 +1,7 @@
 <x-site-layout>
     <h2 class="text-2xl font-extrabold text my-5">Submission ID: {{$submission->id}}</h2>
     <h2 class="text-xl text">Problem:
-        <a href="{{route('problems.show', $submission->problem->id)}}" class="font-bold underline">
+        <a href="{{route('problems.show', $submission->problem)}}" class="font-bold underline">
             {{$submission->problem->id}} - {{$submission->problem->title}}
         </a>
     </h2>

@@ -17,13 +17,8 @@ class TagController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Tag $tag)
     {
-
-        $tag = Tag::query()
-            ->where('id', $id)
-            ->firstorFail();
-
         return view('tags.show', [
             'tag' => $tag,
         ]);

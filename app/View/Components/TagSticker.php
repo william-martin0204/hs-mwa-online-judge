@@ -8,17 +8,14 @@ use Illuminate\View\Component;
 
 class TagSticker extends Component
 {
-    public string $index;
-
-    public string $name;
+    public $tag;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $index, string $name)
+    public function __construct($tag)
     {
-        $this->index = $index;
-        $this->name = $name;
+        $this->tag = $tag;
     }
 
     /**
