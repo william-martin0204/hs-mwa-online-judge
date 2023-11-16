@@ -17,7 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::create([
+            'name' => 'Fernando',
+            'email' => 'fvaldes0109@gmail.com',
+            'password' => bcrypt('password'),
+            'is_admin' => true,
+        ]);
         User::factory(50)->create();
+
         $problems = Problem::factory(100)->create();
         Submission::factory(600)->create();
         $tags = Tag::factory(10)->create();
@@ -25,12 +32,5 @@ class DatabaseSeeder extends Seeder
         foreach ($problems as $problem) {
             $problem->tags()->attach($tags->random(rand(1, 3))->pluck('id')->toArray());
         }
-
-        User::create([
-            'name' => 'Fernando',
-            'email' => 'fvaldes0109@gmail.com',
-            'password' => bcrypt('password'),
-            'is_admin' => true,
-        ]);
     }
 }
