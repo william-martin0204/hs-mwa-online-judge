@@ -30,8 +30,12 @@
                         <td class="py-4 px-6 border-b border-grey-light font-bold text-{{$submission->status == 'Accepted' ? 'green' : 'red'}}-500">
                             {{$submission->status}}
                         </td>
-                        <td class="py-4 px-6 border-b border-grey-light underline font-bold">
-                            <a href="{{route('submissions.show', $submission->id)}}">See Code</a>
+                        <td class="py-4 px-6 border-b border-grey-light font-bold">
+                            @if (auth()->check() && (auth()->user()->id == $submission->user_id || auth()->user()->is_admin))
+                                <a class="underline" href="{{route('submissions.show', $submission->id)}}">See Code</a>
+                            @else
+                                ----
+                            @endif
                         </td>
                     </tr>
                 @endforeach

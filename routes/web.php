@@ -29,7 +29,9 @@ Route::get('problems', [ProblemController::class, 'index'])->name('problems.inde
 Route::get('problems/{problem:slug}', [ProblemController::class, 'show'])->name('problems.show');
 
 Route::get('submissions', [SubmissionController::class, 'index'])->name('submissions.index');
-Route::get('submissions/{id}', [SubmissionController::class, 'show'])->name('submissions.show');
+Route::get('submissions/{id}', [SubmissionController::class, 'show'])
+    ->middleware(['auth', 'owns.submission'])
+    ->name('submissions.show');
 
 Route::get('tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
