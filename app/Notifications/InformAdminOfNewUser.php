@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,12 +12,14 @@ class InformAdminOfNewUser extends Notification
 {
     use Queueable;
 
+    public User $user;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -35,9 +38,12 @@ class InformAdminOfNewUser extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('New User Registration')
+            ->greeting('Hello '.$notifiable->name)
+            ->line('A new user has registered on the site.')
+            ->line('Name: '.$this->user->name)
+            ->line('Email: '.$this->user->email)
+            ->line('Keep moding!');
     }
 
     /**

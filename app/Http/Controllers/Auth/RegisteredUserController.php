@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\InformAdminOfNewUser;
 use App\Notifications\WelcomeNewUser;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -46,6 +47,9 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         $user->notify(new WelcomeNewUser());
+
+        $admin = User::where('is_admin', true)->first();
+        $admin->notify(new InformAdminOfNewUser($user));
 
         Auth::login($user);
 
