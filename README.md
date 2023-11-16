@@ -56,7 +56,7 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     sail up -d
     ```
 
-2. Run the migrations (only the first time)
+2. Run the migrations
 
     ```bash
     sail artisan migrate
@@ -64,7 +64,13 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     sail artisan migrate --seed
     ```
 
-3. Visit [localhost](http://localhost) in your browser
+3. Link the disks to the public folder
+
+    ```bash
+    sail artisan storage:link
+    ```
+
+4. Visit [localhost](http://localhost) in your browser
 
 ## Possible problems
 
