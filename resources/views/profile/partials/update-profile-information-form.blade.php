@@ -17,6 +17,19 @@
         @csrf
         @method('patch')
 
+        <div class="cursor-pointer relative border-2 border-blue-300 realtive text-white font-bold w-40 h-40 rounded-full overflow-hidden bg-blue-400 focus:outline-none">
+            @if (auth()->user()->media->count() > 0)
+                <img src="{{auth()->user()->media->first()->getUrl()}}" alt="{{auth()->user()->name[0]}}" />
+            @else
+                <div class="w-full h-full top-0 grid items-center justify-items-center font-bold text-7xl select-none">
+                    {{auth()->user()->name[0]}}
+                </div>
+            @endif
+            <div class="absolute w-full h-full top-0 opacity-0 hover:opacity-100 grid items-center justify-items-center" style="background-color: rgba(159, 159, 159, 0.42)">
+                <i class="fas fa-edit text-4xl text-white"></i>
+            </div>
+        </div>
+
         <x-input-text-field name="name" label="Name" :value="$user->name" />
 
         <div>

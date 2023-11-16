@@ -68,8 +68,12 @@
 
             @auth
                 <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
-                    <button @click="isOpen = !isOpen" class="realtive text-white font-bold z-10 w-12 h-12 rounded-full overflow-hidden bg-blue-400 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none">
-                        {{Auth::user()->name[0]}}
+                    <button @click="isOpen = !isOpen" class="border-2 border-blue-300 realtive text-white font-bold z-10 w-12 h-12 rounded-full overflow-hidden bg-blue-400 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none">
+                        @if (auth()->user()->media->count() > 0)
+                            <img src="{{auth()->user()->media->first()->getUrl()}}" alt="{{auth()->user()->name[0]}}" />
+                        @else
+                            {{auth()->user()->name[0]}}
+                        @endif
                     </button>
                     <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
                     <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
