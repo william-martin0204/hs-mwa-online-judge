@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'is_admin' => true,
         ]);
-        User::factory(50)->create();
+        User::factory(30)->create();
 
-        $problems = Problem::factory(100)->create();
-        Submission::factory(600)->create();
+        $problems = Problem::factory(80)->create();
+        Submission::factory(1000)->create();
         $tags = Tag::factory(10)->create();
 
         foreach ($problems as $problem) {

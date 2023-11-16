@@ -10,7 +10,7 @@
         <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
             <thead>
                 <tr>
-                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Status</th>
+                    <th class="text-center py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Status</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Problem</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Tags</th>
                 </tr>
@@ -18,7 +18,7 @@
             <tbody>
                 @foreach ($problems as $problem)
                     <tr class="hover:bg-grey-lighter">
-                        <td class="py-4 px-6 border-b border-grey-light">
+                        <td class="text-center py-4 px-6 border-b border-grey-light">
                             @auth
                                 @if (Auth::user()->submissions->where('status', 'Accepted')->contains('problem_id', $problem->id))
                                     <i class="fas fa-check text-green-500"></i>
