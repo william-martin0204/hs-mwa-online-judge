@@ -13,20 +13,44 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
-        <div class="cursor-pointer relative border-2 border-blue-300 realtive text-white font-bold w-40 h-40 rounded-full overflow-hidden bg-blue-400 focus:outline-none">
-            @if (auth()->user()->media->count() > 0)
-                <img src="{{auth()->user()->media->first()->getUrl()}}" alt="{{auth()->user()->name[0]}}" />
-            @else
-                <div class="w-full h-full top-0 grid items-center justify-items-center font-bold text-7xl select-none">
-                    {{auth()->user()->name[0]}}
+        <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 ml-2 sm:col-span-4 md:mr-3">
+            <!-- Photo File Input -->
+            <input type="file" name="photo" class="hidden" x-ref="photo" x-on:change="
+                                photoName = $refs.photo.files[0].name;
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    photoPreview = e.target.result;
+                                };
+                                reader.readAsDataURL($refs.photo.files[0]);
+            ">
+
+            <label class="block text-gray-700 text-sm font-bold mb-2 text-center" for="photo">
+                Profile Photo <span class="text-red-600"> </span>
+            </label>
+
+            <div class="text-center">
+                <!-- Current Profile Photo -->
+                <div class="mt-2" x-show="! photoPreview">
+                    @if (auth()->user()->media->count() > 0)
+                        <img src="{{auth()->user()->media->first()->getUrl()}}" alt="Profile Photo" class="w-40 h-40 m-auto rounded-full shadow border-2 border-blue-300">
+                    @else
+                        <div class="w-40 h-40 m-auto rounded-full shadow border-2 border-blue-300 bg-blue-400 font-bold text-white text-7xl grid items-center justify-items-center">
+                            {{auth()->user()->name[0]}}
+                        </div>
+                    @endif
                 </div>
-            @endif
-            <div class="absolute w-full h-full top-0 opacity-0 hover:opacity-100 grid items-center justify-items-center" style="background-color: rgba(159, 159, 159, 0.42)">
-                <i class="fas fa-edit text-4xl text-white"></i>
+                <!-- New Profile Photo Preview -->
+                <div class="mt-2" x-show="photoPreview" style="display: none;">
+                    <span class="border-2 border-blue-300 block w-40 h-40 rounded-full m-auto shadow" x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('null');">
+                    </span>
+                </div>
+                <button type="button" class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 ml-3" x-on:click.prevent="$refs.photo.click()">
+                    Select New Photo
+                </button>
             </div>
         </div>
 

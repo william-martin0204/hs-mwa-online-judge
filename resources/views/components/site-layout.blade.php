@@ -70,7 +70,7 @@
                 <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                     <button @click="isOpen = !isOpen" class="border-2 border-blue-300 realtive text-white font-bold z-10 w-12 h-12 rounded-full overflow-hidden bg-blue-400 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none">
                         @if (auth()->user()->media->count() > 0)
-                            <img src="{{auth()->user()->media->first()->getUrl()}}" alt="{{auth()->user()->name[0]}}" />
+                            <img src="{{auth()->user()->media->first()->getUrl('preview')}}" alt="{{auth()->user()->name[0]}}" />
                         @else
                             {{auth()->user()->name[0]}}
                         @endif
