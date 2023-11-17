@@ -10,7 +10,7 @@ class TagController extends Controller
     {
         $tags = Tag::query()
             ->with('problems')
-            ->get();
+            ->paginate(8);
 
         return view('tags.index', [
             'tags' => $tags,

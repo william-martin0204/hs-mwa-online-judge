@@ -1,6 +1,10 @@
 <x-site-layout>
     <h1 class="text-4xl font-extrabold text-center my-5">Tags</h1>
 
+    <div class="mb-3">
+        {{$tags->links()}}
+    </div>
+
     <ul class="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
         @foreach ($tags as $tag)
 

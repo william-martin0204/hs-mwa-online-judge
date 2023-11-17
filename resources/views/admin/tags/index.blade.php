@@ -2,6 +2,10 @@
 
     <h1 class="text-4xl font-extrabold text-center my-5">Tags</h1>
 
+    <div class="mb-3">
+        {{$tags->links()}}
+    </div>
+
     <x-success-message />
 
     <div class="mb-5">
