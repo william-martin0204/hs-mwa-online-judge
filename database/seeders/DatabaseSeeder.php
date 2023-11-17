@@ -17,12 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Fernando',
-            'email' => 'fvaldes0109@gmail.com',
-            'password' => bcrypt('password'),
-            'is_admin' => true,
-        ]);
+        if (User::where('email', 'fvaldes0109@gmail.com')->count() == 0) {
+            User::create([
+                'name' => 'Fernando',
+                'email' => 'fvaldes0109@gmail.com',
+                'password' => bcrypt('password'),
+                'is_admin' => true,
+            ]);
+        }
         User::factory(30)->create();
 
         $problems = Problem::factory(80)->create();
