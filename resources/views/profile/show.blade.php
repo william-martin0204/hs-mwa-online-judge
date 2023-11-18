@@ -1,6 +1,4 @@
-<x-site-layout>
-
-    <h1 class="text-4xl font-extrabold text-center my-5">{{$user->name}}</h1>
+<x-site-layout :title="$user->name">
 
     <div class="flex justify-center">
         <div class="border-2 border-blue-300 rounded-full">

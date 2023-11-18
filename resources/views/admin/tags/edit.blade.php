@@ -1,6 +1,4 @@
-<x-site-layout>
-
-    <h1 class="text-4xl font-extrabold text-center my-5">Edit Tag: {{$tag->name}}</h1>
+<x-site-layout title="Edit Tag: {{$tag->name}}">
 
     <form action={{route('admin.tags.update', $tag)}} method="POST" class="w-5/6 max-w-xl mx-auto">
         @csrf

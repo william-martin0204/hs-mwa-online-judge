@@ -1,5 +1,4 @@
-<x-site-layout>
-    <h1 class="text-4xl font-extrabold my-5">Tag: {{$tag->name}}</h1>
+<x-site-layout title="Tag: {{$tag->name}}">
 
     <h2 class="text-2xl font-bold my-5">Description</h2>
     <p>{{$tag->description}}</p>

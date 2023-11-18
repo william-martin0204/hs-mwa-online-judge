@@ -1,6 +1,4 @@
-<x-site-layout>
-
-    <h1 class="text-4xl font-extrabold text-center my-5">Submissions</h1>
+<x-site-layout title="Submissions">
 
     <div class="mb-3">
         {{$submissions->links()}}

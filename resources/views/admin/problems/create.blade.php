@@ -1,6 +1,4 @@
-<x-site-layout>
-
-    <h1 class="text-4xl font-extrabold text-center my-5">Create Problem</h1>
+<x-site-layout title="Create Problem">
 
     <form action={{route('admin.problems.store')}} method="POST" class="w-5/6 mx-auto">
         @csrf

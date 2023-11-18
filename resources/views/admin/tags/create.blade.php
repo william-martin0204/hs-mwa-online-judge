@@ -1,6 +1,4 @@
-<x-site-layout>
-
-    <h1 class="text-4xl font-extrabold text-center my-5">Create Tag</h1>
+<x-site-layout title="Create Tag">
 
     <form action={{route('admin.tags.store')}} method="POST" class="w-5/6 max-w-xl mx-auto">
         @csrf

@@ -1,5 +1,4 @@
-<x-site-layout>
-    <h1 class="text-4xl font-extrabold my-5">{{$problem->id}} - {{$problem->title}}</h1>
+<x-site-layout title="{{$problem->id}} - {{$problem->title}}">
 
     <div>
         @foreach ($problem->tags as $tag)

@@ -1,5 +1,4 @@
-<x-site-layout>
-    <h1 class="text-4xl font-extrabold my-5">{{$problem->id}} - {{$problem->title}}</h1>
+<x-site-layout title="{{$problem->id}} - {{$problem->title}}">
 
     <form action={{route('admin.problems.update', $problem)}} method="POST" class="w-5/6 mx-auto">
         @csrf

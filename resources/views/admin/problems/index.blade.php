@@ -1,6 +1,4 @@
-<x-site-layout>
-
-    <h1 class="text-4xl font-extrabold text-center my-5">Problems</h1>
+<x-site-layout title="Problems">
 
     <x-success-message />
 

@@ -1,5 +1,4 @@
-<x-site-layout>
-    <h1 class="text-4xl font-extrabold text-center my-5">Leaderboard</h1>
+<x-site-layout title="Leaderboard">
 
     <div class="max-w-4xl m-auto">
         <div class="mb-3">
