@@ -8,6 +8,8 @@ use Illuminate\View\Component;
 
 class SiteLayoutNavbar extends Component
 {
+    public bool $mobile;
+
     public array $menu_items;
 
     /**
@@ -15,6 +17,7 @@ class SiteLayoutNavbar extends Component
      */
     public function __construct(bool $mobile = false)
     {
+        $this->mobile = $mobile;
         $this->menu_items = [
             ['label' => 'Welcome', 'route' => 'welcome.index'],
             ['label' => 'Problems', 'route' => 'problems.index'],
@@ -22,11 +25,6 @@ class SiteLayoutNavbar extends Component
             ['label' => 'Submissions', 'route' => 'submissions.index'],
             ['label' => 'Tags', 'route' => 'tags.index'],
         ];
-
-        if ($mobile && auth()->check()) {
-            $this->menu_items[] = ['label' => 'My Account', 'route' => 'profile.edit'];
-            $this->menu_items[] = ['label' => 'Logout', 'route' => 'logout'];
-        }
     }
 
     /**
