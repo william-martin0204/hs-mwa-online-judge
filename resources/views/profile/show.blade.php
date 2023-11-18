@@ -3,15 +3,9 @@
     <h1 class="text-4xl font-extrabold text-center my-5">{{$user->name}}</h1>
 
     <div class="flex justify-center">
-        @if ($user->media->isEmpty())
-            <div class="bg-blue-400 w-40 h-40 text-white bold text-7xl grid items-center justify-items-center rounded-full">
-                {{$user->name[0]}}
-            </div>
-        @else
-            <div class="border-2 border-blue-300 rounded-full">
-                <img class="rounded-full h-40 w-40 m-auto" src="{{$user->media->first()->getUrl()}}" alt="{{$user->name}}">
-            </div>
-        @endif
+        <div class="border-2 border-blue-300 rounded-full">
+            <img class="rounded-full h-40 w-40 m-auto" src="{{$user->getAvatar()}}" alt="{{$user->name}}">
+        </div>
     </div>
 
     @if (auth()->user()->id == $user->id)

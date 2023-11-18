@@ -35,13 +35,7 @@
             <div class="text-center">
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    @if (auth()->user()->media->count() > 0)
-                        <img src="{{auth()->user()->media->first()->getUrl()}}" alt="Profile Photo" class="w-40 h-40 m-auto rounded-full shadow border-2 border-blue-300">
-                    @else
-                        <div class="w-40 h-40 m-auto rounded-full shadow border-2 border-blue-300 bg-blue-400 font-bold text-white text-7xl grid items-center justify-items-center">
-                            {{auth()->user()->name[0]}}
-                        </div>
-                    @endif
+                    <img src="{{auth()->user()->getAvatar()}}" alt="Profile Photo" class="w-40 h-40 m-auto rounded-full shadow border-2 border-blue-300">
                 </div>
                 <!-- New Profile Photo Preview -->
                 <div class="mt-2" x-show="photoPreview" style="display: none;">

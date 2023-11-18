@@ -47,6 +47,13 @@ class User extends Authenticatable implements HasMedia
         'password' => 'hashed',
     ];
 
+    public function getAvatar($type = '')
+    {
+        return $this->media->isEmpty()
+            ? 'https://ui-avatars.com/api/?name='.$this->name.'&background=42A5F5&color=fff'
+            : $this->media->first()->getUrl($type);
+    }
+
     public function submissions()
     {
         return $this->hasMany(Submission::class);
