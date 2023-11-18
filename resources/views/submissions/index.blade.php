@@ -22,7 +22,11 @@
                 @foreach ($submissions as $submission)
                     <tr class="hover:bg-grey-lighter">
                         <td class="text-center py-4 px-6 border-b border-grey-light">{{$submission->id}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$submission->user->name}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">
+                            <a href="{{route('profile.show', $submission->user)}}" class="font-bold underline">
+                                {{$submission->user->name}}
+                            </a>
+                        </td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$submission->language}}</td>
                         <td class="py-4 px-6 border-b border-grey-light underline font-bold">
                             <a href="{{route('problems.show', $submission->problem)}}">{{$submission->problem->id}} - {{$submission->problem->title}}</a>
