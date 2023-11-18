@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -14,7 +16,18 @@ class ProfileController extends Controller
 {
     public function show(User $user)
     {
-        return view('profile.show', compact('user'));
+        $sorted_users = User::withCount(['submissions as accepted_problems_count' => function ($query) {
+            $query->select(DB::raw('COUNT(DISTINCT problem_id)'))
+                ->where('status', 'Accepted');
+        }])
+            ->orderBy('accepted_problems_count', 'desc')
+            ->get();
+
+        $rank = $sorted_users->search(function ($item) use ($user) {
+            return $item->id === $user->id;
+        }) + 1;
+
+        return view('profile.show', compact('user', 'rank'));
     }
 
     /**
