@@ -29,9 +29,6 @@ Route::get('problems', [ProblemController::class, 'index'])->name('problems.inde
 Route::get('problems/{problem:slug}', [ProblemController::class, 'show'])->name('problems.show');
 
 Route::get('submissions', [SubmissionController::class, 'index'])->name('submissions.index');
-Route::get('submissions/{id}', [SubmissionController::class, 'show'])
-    ->middleware(['auth', 'owns.submission'])
-    ->name('submissions.show');
 
 Route::get('tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
@@ -44,6 +41,10 @@ Route::name('admin.')->middleware(['auth', 'is.admin'])->group(function () {
     Route::resource('admin/problems', AdminProblemController::class)->parameters(['problems' => 'problem:slug']);
     Route::resource('admin/tags', AdminTagController::class)->parameters(['tags' => 'tag:slug']);
 });
+
+Route::get('submissions/{submission}', [SubmissionController::class, 'show'])
+    ->middleware('auth')
+    ->name('submissions.show');
 
 Route::post('submissions', [SubmissionController::class, 'store'])
     ->middleware('auth')

@@ -29,12 +29,11 @@ class SubmissionController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Submission $submission)
     {
-
-        $submission = Submission::query()
-            ->where('id', $id)
-            ->firstorFail();
+        if (!auth()->user()->is_admin && auth()->user()->id != $submission->user->id) {
+            abort(403, 'You don\'t own this submission');
+        }
 
         return view('submissions.show', [
             'submission' => $submission,
