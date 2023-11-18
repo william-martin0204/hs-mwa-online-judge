@@ -21,12 +21,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ------------ Public routes --------------------------------------  //
+
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome.index');
 
 Route::get('leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard.index');
 
 Route::get('problems', [ProblemController::class, 'index'])->name('problems.index');
 Route::get('problems/{problem:slug}', [ProblemController::class, 'show'])->name('problems.show');
+
+Route::get('profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::get('submissions', [SubmissionController::class, 'index'])->name('submissions.index');
 
@@ -42,24 +46,19 @@ Route::name('admin.')->middleware(['auth', 'is.admin'])->group(function () {
     Route::resource('admin/tags', AdminTagController::class)->parameters(['tags' => 'tag:slug']);
 });
 
-Route::get('submissions/{submission}', [SubmissionController::class, 'show'])
-    ->middleware('auth')
-    ->name('submissions.show');
-
-Route::post('submissions', [SubmissionController::class, 'store'])
-    ->middleware('auth')
-    ->name('submissions.store');
-
-Route::get('/dashboard', function () {
-    return redirect()->route('welcome.index');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
-
+// Regular user routes
 Route::middleware('auth')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return redirect()->route('welcome.index');
+    })->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('submissions/{submission}', [SubmissionController::class, 'show'])->name('submissions.show');
+    Route::post('submissions', [SubmissionController::class, 'store'])->name('submissions.store');
 });
 
 require __DIR__.'/auth.php';
