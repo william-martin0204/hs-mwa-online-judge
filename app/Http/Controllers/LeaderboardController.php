@@ -17,6 +17,10 @@ class LeaderboardController extends Controller
             ->orderBy('accepted_problems_count', 'desc')
             ->paginate(20);
 
+        foreach ($sorted_users as $key => $user) {
+            $user->rank = $key + 1 + ($sorted_users->currentPage() - 1) * 20;
+        }
+
         return view('leaderboard.index', [
             'sorted_users' => $sorted_users,
         ]);

@@ -18,8 +18,12 @@
                 <tbody>
                     @foreach ($sorted_users as $user)
                         <tr class="hover:bg-grey-lighter">
-                            <td class="text-center py-4 px-6 border-b border-grey-light">{{$loop->index + 1 + (($sorted_users->currentPage() - 1)* $sorted_users->count())}}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{$user->name}}</td>
+                            <td class="text-center py-4 px-6 border-b border-grey-light">{{$user->rank}}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">
+                                <a href="{{route('profile.show', $user)}}" class="font-bold underline">
+                                    {{$user->name}}
+                                </a>
+                            </td>
                             <td class="text-center py-4 px-6 border-b border-grey-light">{{$user->accepted_problems_count}}</td>
                         </tr>
                     @endforeach
