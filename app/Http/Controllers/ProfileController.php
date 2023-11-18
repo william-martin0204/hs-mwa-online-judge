@@ -45,6 +45,8 @@ class ProfileController extends Controller
             $request->user()->addMediaFromRequest('photo')->toMediaCollection();
         }
 
+        session()->flash('success_notification', "User profile successfully updated");
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
