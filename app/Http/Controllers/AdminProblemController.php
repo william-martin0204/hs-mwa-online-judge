@@ -104,6 +104,8 @@ class AdminProblemController extends Controller
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
             'example_output' => ['required', 'string'],
+            'input_testcases' => ['file', 'mimetypes:text/plain'],
+            'output_testcases' => ['file', 'mimetypes:text/plain'],
         ]);
 
         $problem->update([
@@ -112,6 +114,13 @@ class AdminProblemController extends Controller
             'example_input' => $request->input('example_input'),
             'example_output' => $request->input('example_output'),
         ]);
+
+        if ($request->hasFile('input_testcases')) {
+            Storage::disk('cases')->put($problem->id.'.in', $request->file('input_testcases')->get());
+        }
+        if ($request->hasFile('output_testcases')) {
+            Storage::disk('cases')->put($problem->id.'.out', $request->file('output_testcases')->get());
+        }
 
         $problem->tags()->sync($request->input('tags') ?? []);
 
