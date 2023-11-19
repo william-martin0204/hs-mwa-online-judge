@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class TagSelector extends Component
 {
     public $tags;
+
     public $currenttags;
 
     /**

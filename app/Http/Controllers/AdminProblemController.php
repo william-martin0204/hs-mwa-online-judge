@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-use function Laravel\Prompts\error;
-
 class AdminProblemController extends Controller
 {
     /**
@@ -51,7 +49,6 @@ class AdminProblemController extends Controller
             'input_testcases' => ['required', 'file', 'mimetypes:text/plain'],
             'output_testcases' => ['required', 'file', 'mimetypes:text/plain'],
         ]);
-
 
         $problem = Problem::create([
             'title' => $request->input('title'),

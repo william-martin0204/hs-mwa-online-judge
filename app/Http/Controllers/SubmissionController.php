@@ -32,7 +32,7 @@ class SubmissionController extends Controller
 
     public function show(Submission $submission)
     {
-        if (!auth()->user()->is_admin && auth()->user()->id != $submission->user->id) {
+        if (! auth()->user()->is_admin && auth()->user()->id != $submission->user->id) {
             abort(403, 'You don\'t own this submission');
         }
 

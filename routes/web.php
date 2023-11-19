@@ -37,7 +37,6 @@ Route::get('submissions', [SubmissionController::class, 'index'])->name('submiss
 Route::get('tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
 
-
 // ------------ Authentication required ---------------------------- //
 
 // Admin routes
