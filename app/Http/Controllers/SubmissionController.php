@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Submission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SubmissionController extends Controller
 {
@@ -47,6 +48,11 @@ class SubmissionController extends Controller
             'language' => 'required|string',
             'code' => 'required|string',
         ]);
+
+        $input_testcases = Storage::disk('cases')->get($request->problem_id.'.in');
+        $output_testcases = Storage::disk('cases')->get($request->problem_id.'.out');
+
+        // Mocking the submission result
 
         $statuses = ['Accepted', 'Wrong Answer', 'Time Limit Exceeded', 'Memory Limit Exceeded', 'Runtime Error', 'Compilation Error'];
         $status = $statuses[array_rand($statuses)];
