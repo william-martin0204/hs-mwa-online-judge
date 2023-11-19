@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Problem;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
+use function Laravel\Prompts\error;
 
 class AdminProblemController extends Controller
 {
@@ -38,13 +42,16 @@ class AdminProblemController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        Validator::validate($request->all(), [
             'title' => ['required', 'string', 'unique:problems', 'min:3', 'max:100'],
             'tags' => ['array'],
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
             'example_output' => ['required', 'string'],
+            'input_testcases' => ['required', 'file', 'mimetypes:text/plain'],
+            'output_testcases' => ['required', 'file', 'mimetypes:text/plain'],
         ]);
+
 
         $problem = Problem::create([
             'title' => $request->input('title'),
@@ -52,6 +59,9 @@ class AdminProblemController extends Controller
             'example_input' => $request->input('example_input'),
             'example_output' => $request->input('example_output'),
         ]);
+
+        Storage::disk('cases')->put($problem->id.'.in', $request->file('input_testcases')->get());
+        Storage::disk('cases')->put($problem->id.'.out', $request->file('output_testcases')->get());
 
         $problem->tags()->attach($request->input('tags') ?? []);
 
