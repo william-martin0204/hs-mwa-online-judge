@@ -66,12 +66,6 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     sail artisan storage:link
     ```
 
-9. Install and build the node dependencies
-
-    ```bash
-    sail npm install && sail npm run build
-    ```
-
 ## Usage
 
 1. Make sure that the app is running by having executed:
