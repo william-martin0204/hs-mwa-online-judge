@@ -10,9 +10,33 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+
 
 class ProfileController extends Controller
 {
+    public function index(Request $request)
+    {
+        // Get a sorted list of users ordered by the amount of accepted submissions on distinct problems
+        $sorted_users = User::withCount(['submissions as accepted_problems_count' => function ($query) {
+            $query->select(DB::raw('COUNT(DISTINCT problem_id)'))
+                ->where('status', 'Accepted');
+        }])
+            ->when($request->query('search'), function ($query, $search) {
+                return $query->where('name', 'like', "%{$search}%");
+            })
+            ->orderBy('accepted_problems_count', 'desc')
+            ->paginate(20);
+
+        foreach ($sorted_users as $key => $user) {
+            $user->rank = $key + 1 + ($sorted_users->currentPage() - 1) * 20;
+        }
+
+        return view('profile.index', [
+            'sorted_users' => $sorted_users,
+        ]);
+    }
+
     public function show(User $user)
     {
         $sorted_users = User::withCount(['submissions as accepted_problems_count' => function ($query) {

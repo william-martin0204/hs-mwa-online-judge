@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome.index');
 
-Route::get('leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard.index');
+Route::get('leaderboard', [ProfileController::class, 'index'])->name('profile.index');
 
 Route::get('problems', [ProblemController::class, 'index'])->name('problems.index');
 Route::get('problems/{problem:slug}', [ProblemController::class, 'show'])->name('problems.show');

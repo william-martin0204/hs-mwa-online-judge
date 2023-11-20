@@ -1,6 +1,9 @@
 <x-site-layout title="Leaderboard">
 
     <div class="max-w-4xl m-auto">
+
+        <x-search-bar placeholder="Search user by name..." />
+
         <div class="mb-3">
             {{$sorted_users->links()}}
         </div>
