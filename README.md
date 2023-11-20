@@ -88,6 +88,11 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     sail down
     ```
 
+## Debugging
+
+- You can use [Ray](https://myray.app/) to debug the app. The necessary dependencies are already installed.
+- You can use a mailpit instance to test the email functionality. Visit [localhost:8025](http://localhost:8025) in your browser to see the emails sent by the app.
+
 ## Possible problems
 
 - If entering [localhost](http://localhost) throws something like:
