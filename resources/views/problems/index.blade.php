@@ -1,5 +1,7 @@
 <x-site-layout title="Problems">
 
+    <x-search-bar />
+
     <div class="mb-3">
         {{$problems->links()}}
     </div>
