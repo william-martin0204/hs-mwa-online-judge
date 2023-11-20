@@ -40,23 +40,19 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     cat .env.example > .env
     ```
 
-5. Generate the application key
-
-    ```bash
-    ./vendor/bin/sail artisan key:generate
-    # or if you configured the alias:
-    sail artisan key:generate
-    ```
-
-## Usage
-
-1. Start the containers
+5. Start the containers
 
     ```bash
     sail up -d
     ```
 
-2. Run the migrations
+6. Generate the application key
+
+    ```bash
+    sail artisan key:generate
+    ```
+
+7. Run the migrations
 
     ```bash
     sail artisan migrate
@@ -64,17 +60,35 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     sail artisan migrate --seed
     ```
 
-3. Link the disks to the public folder
+8. Link the disks to the public folder
 
     ```bash
     sail artisan storage:link
     ```
 
-4. Visit [localhost](http://localhost) in your browser
+9. Install and build the node dependencies
+
+    ```bash
+    sail npm install && sail npm run build
+    ```
+
+## Usage
+
+1. Make sure that the app is running by having executed:
+
+    ```bash
+    sail up -d
+    ```
+
+2. Visit [localhost](http://localhost) in your browser
+
+3. To stop the app run:
+
+    ```bash
+    sail down
+    ```
 
 ## Possible problems
-
-- If running the migrations throws **SQLSTATE[HY000] [2002] Connection refused**, go to your `.env` file, set `DB_HOST=mysql` and re-run the migrations.
 
 - If entering [localhost](http://localhost) throws something like:
 
