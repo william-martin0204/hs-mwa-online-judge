@@ -6,11 +6,13 @@
         </div>
     </div>
 
-    @if (auth()->user()->id == $user->id)
-        <div class="flex justify-center mt-3">
-            <a href={{route('profile.edit')}} class="bg-blue-500 text-white font-bold p-2 rounded-lg shadow-md">Edit Profile</a>
-        </div>
-    @endif
+    @auth
+        @if (auth()->user()->id == $user->id)
+            <div class="flex justify-center mt-3">
+                <a href={{route('profile.edit')}} class="bg-blue-500 text-white font-bold p-2 rounded-lg shadow-md">Edit Profile</a>
+            </div>
+        @endif
+    @endauth
 
     <h2 class="text-2xl font-bold my-5">Solved Problems:
         {{$user->submissions->where('status', 'Accepted')->groupBy('problem_id')->count()}}
