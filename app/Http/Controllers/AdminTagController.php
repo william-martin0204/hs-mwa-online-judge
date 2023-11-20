@@ -10,9 +10,13 @@ class AdminTagController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $tags = Tag::query()
+            ->when($request->query('search'), function ($query, $search) {
+                return $query->where('name', 'like', "%{$search}%");
+            })
+            ->orderBy('name')
             ->paginate(20);
 
         return view('admin.tags.index', [

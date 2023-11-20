@@ -1,6 +1,6 @@
 <x-site-layout title="Problems">
 
-    <x-search-bar />
+    <x-search-bar placeholder="Search problem by title or id..." />
 
     <div class="mb-3">
         {{$problems->links()}}

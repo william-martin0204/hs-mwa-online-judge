@@ -1,5 +1,7 @@
 <x-site-layout title="Tags">
 
+    <x-search-bar placeholder="Search tag by name..." />
+
     <div class="mb-3">
         {{$tags->links()}}
     </div>
