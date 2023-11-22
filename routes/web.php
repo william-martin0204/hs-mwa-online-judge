@@ -25,6 +25,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome.index');
 
+Route::get('/dashboard', function () {
+    return redirect()->route('welcome.index');
+})->name('dashboard');
+
 Route::get('leaderboard', [ProfileController::class, 'index'])->name('profile.index');
 
 Route::get('problems', [ProblemController::class, 'index'])->name('problems.index');
@@ -47,10 +51,6 @@ Route::name('admin.')->middleware(['auth', 'verified', 'is.admin'])->group(funct
 
 // Regular user routes
 Route::middleware(['auth', 'verified'])->group(function () {
-
-    Route::get('/dashboard', function () { // WTF
-        return redirect()->route('welcome.index');
-    })->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
