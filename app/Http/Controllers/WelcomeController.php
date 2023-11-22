@@ -24,12 +24,8 @@ class WelcomeController extends Controller
         });
 
         $sorted_users = Cache::remember('welcome.top_ten_users', config('app.cache_ttl'), function() {
-            return User::withCount(['submissions as accepted_problems_count' => function ($query) {
-                $query->select(DB::raw('COUNT(DISTINCT problem_id)'))
-                    ->where('status', 'Accepted');
-            }])
-
-                ->orderBy('accepted_problems_count', 'desc')
+            return User::query()
+                ->leaderboard()
                 ->take(10)
                 ->get();
         });

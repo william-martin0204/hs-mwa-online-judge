@@ -19,15 +19,12 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         // Get a sorted list of users ordered by the amount of accepted submissions on distinct problems
-        $sorted_users = User::withCount(['submissions as accepted_problems_count' => function ($query) {
-            $query->select(DB::raw('COUNT(DISTINCT problem_id)'))
-                ->where('status', 'Accepted');
-        }])
+        $sorted_users = User::query()
+            ->leaderboard()
             ->when($request->query('search'), function ($query, $search) {
                 return $query->where('name', 'like', "%{$search}%");
             })
-            ->orderBy('accepted_problems_count', 'desc')
-            ->paginate(20);
+            ->paginate(10);
 
         foreach ($sorted_users as $key => $user) {
             $user->rank = $key + 1 + ($sorted_users->currentPage() - 1) * 20;
@@ -40,11 +37,8 @@ class ProfileController extends Controller
 
     public function show(User $user)
     {
-        $sorted_users = User::withCount(['submissions as accepted_problems_count' => function ($query) {
-            $query->select(DB::raw('COUNT(DISTINCT problem_id)'))
-                ->where('status', 'Accepted');
-        }])
-            ->orderBy('accepted_problems_count', 'desc')
+        $sorted_users = User::query()
+            ->leaderboard()
             ->get();
 
         $rank = $sorted_users->search(function ($item) use ($user) {

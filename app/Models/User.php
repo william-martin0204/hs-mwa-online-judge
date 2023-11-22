@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -57,6 +60,17 @@ class User extends Authenticatable implements HasMedia
         });
 
         return $avatar;
+    }
+
+    public function scopeLeaderboard(Builder $query)
+    {
+        $query->withCount(['submissions as accepted_problems_count' => function ($query) {
+            $query->select(DB::raw('COUNT(DISTINCT problem_id)'))
+                ->where('status', 'Accepted');
+        }])
+
+            ->orderByDesc('accepted_problems_count')
+            ->orderBy('created_at');
     }
 
     public function submissions()
