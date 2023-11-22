@@ -11,7 +11,7 @@ class WelcomeController extends Controller
 {
     public function welcome()
     {
-        $problems = Cache::remember('welcome.recommended_problems', 1800, function() {
+        $problems = Cache::remember('welcome.recommended_problems', config('app.cache_ttl'), function() {
 
             // Get the 4 most solved problems, that have not been solved by the current user
             return Problem::withCount(['submissions as accepted_submissions_count' => function ($query) {
@@ -23,7 +23,7 @@ class WelcomeController extends Controller
                 ->get();
         });
 
-        $sorted_users = Cache::remember('welcome.top_ten_users', 1800, function() {
+        $sorted_users = Cache::remember('welcome.top_ten_users', config('app.cache_ttl'), function() {
             return User::withCount(['submissions as accepted_problems_count' => function ($query) {
                 $query->select(DB::raw('COUNT(DISTINCT problem_id)'))
                     ->where('status', 'Accepted');
