@@ -40,15 +40,15 @@ Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show')
 // ------------ Authentication required ---------------------------- //
 
 // Admin routes
-Route::name('admin.')->middleware(['auth', 'is.admin'])->group(function () {
+Route::name('admin.')->middleware(['auth', 'verified', 'is.admin'])->group(function () {
     Route::resource('admin/problems', AdminProblemController::class)->parameters(['problems' => 'problem:slug']);
     Route::resource('admin/tags', AdminTagController::class)->parameters(['tags' => 'tag:slug']);
 });
 
 // Regular user routes
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('/dashboard', function () {
+    Route::get('/dashboard', function () { // WTF
         return redirect()->route('welcome.index');
     })->name('dashboard');
 
