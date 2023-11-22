@@ -4,10 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Submission extends Model
 {
     use HasFactory;
+
+    protected static function booted()
+    {
+        static::creating(function ($submission) {
+            
+            if ($submission->status == 'Accepted') {
+                Cache::delete('welcome.recommended_problems');
+                Cache::delete('welcome.top_ten_users');
+            }
+        });
+    }
 
     protected $fillable = [
         'user_id',

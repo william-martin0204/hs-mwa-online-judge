@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -79,6 +80,9 @@ class ProfileController extends Controller
         if ($request->hasFile('photo')) {
             $request->user()->clearMediaCollection();
             $request->user()->addMediaFromRequest('photo')->toMediaCollection();
+
+            Cache::delete('avatar--'.$request->user()->id);
+            Cache::delete('avatar-preview-'.$request->user()->id);
         }
 
         session()->flash('success_notification', 'User profile successfully updated');

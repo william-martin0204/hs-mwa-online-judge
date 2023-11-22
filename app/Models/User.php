@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -49,9 +50,13 @@ class User extends Authenticatable implements HasMedia
 
     public function getAvatar($type = '')
     {
-        return $this->media->isEmpty()
-            ? 'https://ui-avatars.com/api/?name='.$this->name.'&background=42A5F5&color=fff'
-            : $this->media->first()->getUrl($type);
+        $avatar = Cache::remember('avatar-'.$type.'-'.$this->id, config('app.cache_ttl'), function() use ($type) {
+            return $this->media->isEmpty()
+                ? 'https://ui-avatars.com/api/?name='.$this->name.'&background=42A5F5&color=fff'
+                : $this->media->first()->getUrl($type);
+        });
+
+        return $avatar;
     }
 
     public function submissions()
