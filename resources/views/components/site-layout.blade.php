@@ -126,6 +126,8 @@
             @endguest
         </header>
 
+        <x-verify-email-banner />
+
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
                 <h1 class="text-4xl font-extrabold text-center my-5">{{$title}}</h1>
