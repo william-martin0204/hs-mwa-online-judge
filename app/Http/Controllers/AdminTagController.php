@@ -13,9 +13,7 @@ class AdminTagController extends Controller
     public function index(Request $request)
     {
         $tags = Tag::query()
-            ->when($request->query('search'), function ($query, $search) {
-                return $query->where('name', 'like', "%{$search}%");
-            })
+            ->search($request->query('search'))
             ->orderBy('name')
             ->paginate(20);
 

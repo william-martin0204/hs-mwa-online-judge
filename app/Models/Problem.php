@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -23,6 +24,16 @@ class Problem extends Model
         'example_input',
         'example_output',
     ];
+
+    public function scopeSearch(Builder $query, $search)
+    {
+        $query->when($search, function ($query, $search) {
+            if (is_numeric($search)) {
+                return $query->where('id', $search);
+            }
+            return $query->where('title', 'like', "%{$search}%");
+        });
+    }
 
     public function submissions()
     {

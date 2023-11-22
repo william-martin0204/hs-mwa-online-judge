@@ -22,6 +22,16 @@ class Tag extends Model
         'description',
     ];
 
+    public function scopeSearch($query, $search)
+    {
+        $query->when($search, function ($query, $search) {
+            if (is_numeric($search)) {
+                return $query->where('id', $search);
+            }
+            return $query->where('name', 'like', "%{$search}%");
+        });
+    }
+
     public function problems()
     {
         return $this->belongsToMany(Problem::class);

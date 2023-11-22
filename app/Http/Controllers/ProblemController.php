@@ -13,12 +13,7 @@ class ProblemController extends Controller
     public function index(Request $request)
     {
         $problems = Problem::query()
-            ->when($request->query('search'), function ($query, $search) {
-                if (is_numeric($search)) {
-                    return $query->where('id', $search);
-                }
-                return $query->where('title', 'like', "%{$search}%");
-            })
+            ->search($request->query('search'))
             ->with('tags')
             ->paginate(20);
 

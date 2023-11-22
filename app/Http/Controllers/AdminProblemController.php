@@ -16,12 +16,7 @@ class AdminProblemController extends Controller
     public function index(Request $request)
     {
         $problems = Problem::query()
-            ->when($request->query('search'), function ($query, $search) {
-                if (is_numeric($search)) {
-                    return $query->where('id', $search);
-                }
-                return $query->where('title', 'like', "%{$search}%");
-            })
+            ->search($request->query('search'))
             ->paginate(20);
 
         return view('admin.problems.index', [
