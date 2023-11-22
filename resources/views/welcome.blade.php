@@ -18,4 +18,27 @@
         </div>
     </div>
 
+    <h2 class="text-2xl font-extrabold text-center my-5">Top 10 users</h2>
+
+    <div class="my-5 flex justify-center">
+        <table class="border-collapse">
+            <thead>
+                <tr>
+                    <th class="border border-gray-700">Rank</th>
+                    <th class="border border-gray-700">User</th>
+                    <th class="border border-gray-700">Solved</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($sorted_users as $user)
+                    <tr>
+                        <td class="border border-gray-700 text-center">{{$loop->index + 1}}</td>
+                        <td class="border border-gray-700 underline font-bold"><a href={{route('profile.show', $user)}}>{{$user->name}}</a></td>
+                        <td class="border border-gray-700 text-center">{{$user->accepted_problems_count}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
 </x-site-layout>
