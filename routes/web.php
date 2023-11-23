@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminProblemController;
 use App\Http\Controllers\AdminTagController;
+use App\Http\Controllers\DownloadFileController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\ProfileController;
@@ -45,6 +46,8 @@ Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show')
 
 // Admin routes
 Route::name('admin.')->middleware(['auth', 'verified', 'is.admin'])->group(function () {
+
+    Route::get('admin/testcase/{id}/{type}', [DownloadFileController::class, 'download'])->name('testcase.download');
     Route::resource('admin/problems', AdminProblemController::class)->parameters(['problems' => 'problem:slug']);
     Route::resource('admin/tags', AdminTagController::class)->parameters(['tags' => 'tag:slug']);
 });
