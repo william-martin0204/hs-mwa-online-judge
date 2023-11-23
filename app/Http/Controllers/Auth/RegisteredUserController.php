@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         $admin = User::where('is_admin', true)->first();
-        $admin->notify(new InformAdminOfNewUser($user));
+        $admin?->notify(new InformAdminOfNewUser($user));
 
         Auth::login($user);
 
