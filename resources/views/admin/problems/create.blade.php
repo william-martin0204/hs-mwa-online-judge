@@ -5,7 +5,7 @@
 
         <x-input-text-field name="title" label="Title"/>
         <x-tag-selector :tags="$tags"/>
-        <x-input-textarea-field name="description" label="Description"/>
+        <x-input-field-rich-text name="description" label="Description"/>
         <x-input-textarea-field name="example_input" label="Example Input"/>
         <x-input-textarea-field name="example_output" label="Example Output"/>
 

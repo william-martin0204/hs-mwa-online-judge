@@ -8,7 +8,7 @@
 
     <div>
         <h2 class="text-2xl font-bold my-5">Description</h2>
-        <p>{{$problem->description}}</p>
+        <p>{!!$problem->description!!}</p>
 
         <x-in-out-area title="Example Input" :value="$problem->example_input" />
         <x-in-out-area title="Example Output" :value="$problem->example_output" />
