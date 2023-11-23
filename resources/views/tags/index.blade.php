@@ -13,7 +13,7 @@
             <a href={{route('tags.show', $tag)}} class="h-full block">
                 <p class="text-xl font-bold">{{ $tag->name }}</p>
                 <p class="font-bold">{{ $tag->problems->count() }} problems</p>
-                <p class="text-gray-500">{{ $tag->description }}</p>
+                <p class="text-gray-500">{{ Str::limit($tag->description, 200) }}</p>
             </a>
         </li>
 
