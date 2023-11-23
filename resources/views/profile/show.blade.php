@@ -1,4 +1,4 @@
-<x-site-layout title="{{$user->name}} - Rank: {{$rank}}">
+<x-site-layout title="{!!$user->name!!} - Rank: {{$rank}}">
 
     <div class="flex justify-center">
         <div class="border-2 border-blue-300 rounded-full">
