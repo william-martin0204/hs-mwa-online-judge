@@ -13,7 +13,7 @@ class Submission extends Model
     protected static function booted()
     {
         static::creating(function ($submission) {
-            
+
             if ($submission->status == 'Accepted') {
                 Cache::delete('welcome.recommended_problems');
                 Cache::delete('welcome.top_ten_users');

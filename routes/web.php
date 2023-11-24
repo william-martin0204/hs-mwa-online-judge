@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdminProblemController;
 use App\Http\Controllers\AdminTagController;
 use App\Http\Controllers\DownloadFileController;
-use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubmissionController;
@@ -53,7 +52,7 @@ Route::name('admin.')->middleware(['auth', 'verified', 'is.admin'])->group(funct
 });
 
 // Regular user routes
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

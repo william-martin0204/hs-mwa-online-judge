@@ -54,7 +54,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     public function getAvatar($type = '')
     {
-        $avatar = Cache::remember('avatar-'.$type.'-'.$this->id, config('app.cache_ttl'), function() use ($type) {
+        $avatar = Cache::remember('avatar-'.$type.'-'.$this->id, config('app.cache_ttl'), function () use ($type) {
             return $this->media->isEmpty()
                 ? 'https://ui-avatars.com/api/?name='.$this->name.'&background=42A5F5&color=fff'
                 : $this->media->first()->getUrl($type);

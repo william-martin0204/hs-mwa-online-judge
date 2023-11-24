@@ -31,6 +31,7 @@ class Problem extends Model
             if (is_numeric($search)) {
                 return $query->where('id', $search);
             }
+
             return $query->where('title', 'like', "%{$search}%");
         });
     }
