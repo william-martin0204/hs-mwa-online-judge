@@ -15,16 +15,17 @@ class ProfileController extends Controller
 {
     public function index(Request $request)
     {
+        $elements_per_page = 10;
+
         // Get a sorted list of users ordered by the amount of accepted submissions on distinct problems
         $sorted_users = User::query()
             ->leaderboard()
             ->when($request->query('search'), function ($query, $search) {
                 return $query->where('name', 'like', "%{$search}%");
             })
-            ->paginate(10);
-
+            ->paginate($elements_per_page);
         foreach ($sorted_users as $key => $user) {
-            $user->rank = $key + 1 + ($sorted_users->currentPage() - 1) * 20;
+            $user->rank = $key + 1 + ($sorted_users->currentPage() - 1) * $elements_per_page;
         }
 
         return view('profile.index', [
