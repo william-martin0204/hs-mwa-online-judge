@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Problem extends Model
@@ -15,6 +16,11 @@ class Problem extends Model
     {
         static::creating(function ($problem) {
             $problem->slug = Str::slug($problem->title);
+        });
+
+        static::deleted(function ($problem) {
+            Storage::disk('cases')->delete($problem->id.'.in');
+            Storage::disk('cases')->delete($problem->id.'.out');
         });
     }
 
