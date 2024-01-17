@@ -16,7 +16,6 @@ class Submission extends Model
 
             if ($submission->status == 'Accepted') {
                 Cache::delete('welcome.recommended_problems');
-                Cache::delete('welcome.top_ten_users');
             }
         });
     }

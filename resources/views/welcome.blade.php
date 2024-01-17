@@ -1,4 +1,6 @@
 <x-site-layout title="Pro-coder Realm Online Judge">
+    @livewireStyles
+    @livewireScripts
 
     <h2 class="text-2xl font-extrabold text-center my-5">Try these problems</h2>
 
@@ -18,27 +20,8 @@
         </div>
     </div>
 
-    <h2 class="text-2xl font-extrabold text-center my-5">Top 10 users</h2>
+    <h2 class="text-2xl font-extrabold text-center my-5">Latest Codeforces Contests</h2>
 
-    <div class="my-5 flex justify-center">
-        <table class="border-collapse">
-            <thead>
-                <tr>
-                    <th class="border border-gray-700">Rank</th>
-                    <th class="border border-gray-700">User</th>
-                    <th class="border border-gray-700">Solved</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($sorted_users as $user)
-                    <tr>
-                        <td class="border border-gray-700 text-center">{{$loop->index + 1}}</td>
-                        <td class="border border-gray-700 underline font-bold"><a href={{route('profile.show', $user)}}>{{$user->name}}</a></td>
-                        <td class="border border-gray-700 text-center">{{$user->accepted_problems_count}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    <livewire:contest-cards :contests="$contests" />
 
 </x-site-layout>

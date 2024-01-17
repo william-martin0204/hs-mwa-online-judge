@@ -28,13 +28,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         {
             $user->clearMediaCollection();
         });
-
-        static::creating(function ($user)
-        {
-            if (User::count() < 10) {
-                Cache::delete('welcome.top_ten_users');
-            }
-        });
     }
 
     /**
