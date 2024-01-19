@@ -65,8 +65,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('submissions', [SubmissionController::class, 'store'])->name('submissions.store');
 });
 
-Route::get('/test-error', function() {
-    throw new Exception('This is a test exception');
-});
-
 require __DIR__.'/auth.php';
