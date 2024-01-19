@@ -22,6 +22,6 @@
 
     <h2 class="text-2xl font-extrabold text-center my-5">Latest Codeforces Contests</h2>
 
-    <livewire:contest-cards :contests="$contests" />
+    <livewire:contest-cards />
 
 </x-site-layout>

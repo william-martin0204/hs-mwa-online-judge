@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Problem;
-use App\Models\User;
-use App\Services\Contest;
 use Illuminate\Support\Facades\Cache;
 
 class WelcomeController extends Controller
@@ -25,8 +23,6 @@ class WelcomeController extends Controller
                 ->get();
         });
 
-        $contests = Contest::getLatestsContests(8);
-
-        return view('welcome', compact('problems', 'contests'));
+        return view('welcome', compact('problems'));
     }
 }
