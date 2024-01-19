@@ -16,15 +16,21 @@ class InputTextField extends Component
 
     public string $type;
 
+    public string $placeholder;
+
+    public bool $isLivewire;
+
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $label, string $value = null, string $type = 'text')
+    public function __construct(string $name, string $label = '', string $value = null, string $type = 'text', string $placeholder = '', bool $isLivewire = false)
     {
         $this->name = $name;
         $this->label = $label;
         $this->value = $value;
         $this->type = $type;
+        $this->placeholder = $placeholder;
+        $this->isLivewire = $isLivewire;
     }
 
     /**

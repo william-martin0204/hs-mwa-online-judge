@@ -14,14 +14,23 @@ class InputTextareaField extends Component
 
     public string $value;
 
+    public string $placeholder;
+
+    public bool $isLivewire;
+
+    public string $rows;
+
     /**
      * Create a new component instance.
      */
-    public function __construct(string $name, string $label, string $value = '')
+    public function __construct(string $name, string $label = '', string $value = '', string $placeholder = '', bool $isLivewire = false, string $rows = '10')
     {
         $this->name = $name;
         $this->label = $label;
         $this->value = $value;
+        $this->placeholder = $placeholder;
+        $this->rows = $rows;
+        $this->isLivewire = $isLivewire;
     }
 
     /**
