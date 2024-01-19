@@ -2,7 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Services\Contest;
+use App\Services\ContestService;
+use Exception;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -11,6 +12,7 @@ class ContestCards extends Component
 
     public $contests;
     public $loading = true;
+    public $failed = false;
 
     public function mount()
     {
@@ -20,7 +22,11 @@ class ContestCards extends Component
     #[On('loadContests')]
     public function loadContests()
     {
-        $this->contests = Contest::getLatestsContests(8);
+        try {
+            $this->contests = ContestService::getLatestsContests(8);
+        } catch (Exception $e) {
+            $this->failed = true;
+        }
 
         $this->loading = false;
     }
