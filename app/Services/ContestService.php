@@ -9,7 +9,9 @@ class ContestService
 {
     public static function getLatestsContests(int $amount = 4) {
 
-        $response = Http::get('https://codeforces.com/api/contest.list?gym=false');
+        $response = Http::acceptJson()->get(config('services.codeforces.endpoint') . 'contest.list', [
+            'gym' => false,
+        ]);
 
         if ($response->failed()) {
             throw new Exception('Codeforces API is not available');
