@@ -20,6 +20,10 @@
             My Profile
         </a>
 
+        <a href={{ route('tokens.index') }} class="{{request()->routeIs('tokens.index') ? 'active-nav-link' : ''}} flex items-center text-white hover:opacity-100 py-4 pl-6 nav-item">
+            My Tokens
+        </a>
+
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <div class="cursor-pointer flex items-center text-white hover:opacity-100 py-4 pl-6 nav-item" onclick="event.preventDefault(); this.closest('form').submit();">
