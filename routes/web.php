@@ -58,16 +58,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/tokens', [TokenController::class, 'index'])->name('tokens.index');
-    Route::post('/tokens', [TokenController::class, 'store'])->name('tokens.store');
-    Route::delete('/tokens/{token}', [TokenController::class, 'destroy'])->name('tokens.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('submissions/{submission}', [SubmissionController::class, 'show'])->name('submissions.show');
     Route::post('submissions', [SubmissionController::class, 'store'])->name('submissions.store');
+
+    Route::get('/tokens', [TokenController::class, 'index'])->name('tokens.index');
+    Route::post('/tokens', [TokenController::class, 'store'])->name('tokens.store');
+    Route::delete('/tokens/{token}', [TokenController::class, 'destroy'])->name('tokens.destroy');
 });
 
 require __DIR__.'/auth.php';
