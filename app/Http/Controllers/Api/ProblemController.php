@@ -50,7 +50,7 @@ class ProblemController extends Controller
     public function update(Request $request, Problem $problem)
     {
         $validator = Validator::make($request->all(), [
-            'title' => ['required', 'string', 'unique:problems', 'min:3', 'max:100'],
+            'title' => ['required', 'string', 'unique:problems,title,'.$problem->id, 'min:3', 'max:100'],
             'tags' => ['array'],
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
