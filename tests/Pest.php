@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -42,7 +43,13 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function createAdmin()
 {
-    // ..
+    $admin = User::factory()->create();
+
+    $admin->is_admin = true;
+    $admin->email_verified_at = now();
+    $admin->save();
+
+    return $admin;
 }

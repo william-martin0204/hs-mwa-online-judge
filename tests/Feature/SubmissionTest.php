@@ -4,17 +4,6 @@ use App\Models\Problem;
 use App\Models\Submission;
 use App\Models\User;
 
-function createAdmin()
-{
-    $admin = User::factory()->create();
-
-    $admin->is_admin = true;
-    $admin->email_verified_at = now();
-    $admin->save();
-
-    return $admin;
-}
-
 test('submissions page is displayed', function () {
 
     $response = $this->get('/submissions');
