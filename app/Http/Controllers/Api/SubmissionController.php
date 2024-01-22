@@ -52,7 +52,6 @@ class SubmissionController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'message' => 'Validation failed',
                 'errors' => $validator->errors(),
             ], 422);
         }
@@ -73,6 +72,6 @@ class SubmissionController extends Controller
             'status' => $status,
         ]);
 
-        return response()->json($submission, 201);
+        return response()->json(new SubmissionResource($submission), 201);
     }
 }
