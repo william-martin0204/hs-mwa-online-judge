@@ -137,6 +137,7 @@ test('admin can update a tag', function () {
 
     $this->assertDatabaseHas('tags', [
         'name' => 'Test Tag',
+        'slug' => 'test-tag',
         'description' => 'Test Description',
     ]);
 });

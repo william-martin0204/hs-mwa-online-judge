@@ -18,6 +18,10 @@ class Problem extends Model
             $problem->slug = Str::slug($problem->title);
         });
 
+        static::updating(function ($problem) {
+            $problem->slug = Str::slug($problem->title);
+        });
+
         static::deleted(function ($problem) {
             Storage::disk('cases')->delete($problem->id.'.in');
             Storage::disk('cases')->delete($problem->id.'.out');

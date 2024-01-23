@@ -157,6 +157,7 @@ test('admin can update a problem', function () {
     // Check if problem is updated with the correct data
     $this->assertNotNull($problem);
     $this->assertEquals('Test Problem', $problem->title);
+    $this->assertEquals('test-problem', $problem->slug);
     $this->assertEquals('Test Description', $problem->description);
     $this->assertEquals('Hello World', $problem->example_input);
     $this->assertEquals('Hello World', $problem->example_output);
