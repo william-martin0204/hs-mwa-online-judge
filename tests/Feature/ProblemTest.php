@@ -209,7 +209,6 @@ test('admin can delete a problem', function () {
 
     $problem = Problem::where('title', 'Test Problem')->first();
 
-    // Check if problem is deleted
     $this->assertNull($problem);
 
     $response->assertRedirect('/admin/problems');
