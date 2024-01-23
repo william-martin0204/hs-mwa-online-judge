@@ -53,3 +53,12 @@ function createAdmin()
 
     return $admin;
 }
+
+function createUserAndToken()
+{
+    $user = User::factory()->create();
+
+    $user->createToken('test');
+
+    return session('success_token');
+}
