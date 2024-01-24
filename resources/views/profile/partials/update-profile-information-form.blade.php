@@ -32,6 +32,10 @@
                 Profile Photo <span class="text-red-600"> </span>
             </label>
 
+            @error('photo')
+                <span class="text-red-500 font-bold">{{$message}}</span>
+            @enderror
+
             <div class="text-center">
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
