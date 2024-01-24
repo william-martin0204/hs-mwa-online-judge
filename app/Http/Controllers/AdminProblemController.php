@@ -47,8 +47,8 @@ class AdminProblemController extends Controller
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
             'example_output' => ['required', 'string'],
-            'input_testcases' => ['required', 'file', 'mimetypes:text/plain'],
-            'output_testcases' => ['required', 'file', 'mimetypes:text/plain'],
+            'input_testcases' => ['required', 'file', 'mimetypes:text/plain', 'max:8192'],
+            'output_testcases' => ['required', 'file', 'mimetypes:text/plain', 'max:8192'],
         ]);
 
         $problem = Problem::create([
@@ -102,8 +102,8 @@ class AdminProblemController extends Controller
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
             'example_output' => ['required', 'string'],
-            'input_testcases' => ['file', 'mimetypes:text/plain'],
-            'output_testcases' => ['file', 'mimetypes:text/plain'],
+            'input_testcases' => ['file', 'mimetypes:text/plain, max:8192'],
+            'output_testcases' => ['file', 'mimetypes:text/plain, max:8192'],
         ]);
 
         $problem->update([

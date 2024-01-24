@@ -32,8 +32,8 @@ class ProblemController extends Controller
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
             'example_output' => ['required', 'string'],
-            'input_testcases' => ['required', 'file', 'mimetypes:text/plain'],
-            'output_testcases' => ['required', 'file', 'mimetypes:text/plain'],
+            'input_testcases' => ['required', 'file', 'mimetypes:text/plain', 'max:8192'],
+            'output_testcases' => ['required', 'file', 'mimetypes:text/plain', 'max:8192'],
         ]);
 
         if ($validator->fails()) {
@@ -55,8 +55,8 @@ class ProblemController extends Controller
             'description' => ['required', 'string'],
             'example_input' => ['required', 'string'],
             'example_output' => ['required', 'string'],
-            'input_testcases' => ['required', 'file', 'mimetypes:text/plain'],
-            'output_testcases' => ['required', 'file', 'mimetypes:text/plain'],
+            'input_testcases' => ['required', 'file', 'mimetypes:text/plain', 'max:8192'],
+            'output_testcases' => ['required', 'file', 'mimetypes:text/plain', 'max:8192'],
         ]);
 
         if ($validator->fails()) {
