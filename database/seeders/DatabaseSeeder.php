@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Contact;
 use App\Models\Problem;
 use App\Models\Submission;
 use App\Models\Tag;
@@ -34,5 +35,7 @@ class DatabaseSeeder extends Seeder
         foreach ($problems as $problem) {
             $problem->tags()->attach($tags->random(rand(1, 3))->pluck('id')->toArray());
         }
+
+        Contact::factory(50)->create();
     }
 }

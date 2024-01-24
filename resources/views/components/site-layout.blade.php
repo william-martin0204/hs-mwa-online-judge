@@ -42,6 +42,11 @@
                         Manage Tags
                     </button>
                 </a>
+                <a href={{route('admin.contacts.index')}}>
+                    <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                        Manage Contacts
+                    </button>
+                </a>
             </div>
         @endif
     </aside>
@@ -106,6 +111,11 @@
                     <a href={{route('admin.tags.index')}} class="mr-5">
                         <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                             Manage Tags
+                        </button>
+                    </a>
+                    <a href={{route('admin.contacts.index')}} class="mr-5">
+                        <button class="w-full bg-white cta-btn font-semibold py-2 mx-3 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                            Manage Contacts
                         </button>
                     </a>
                 </div>
