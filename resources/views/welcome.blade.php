@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="flex flex-col space-between">
-                        <p class="text-gray-700 text-base">{!! Str::limit($problem->description) !!}</p>
+                        <p class="text-gray-700 text-base">{{ Str::limit(strip_tags($problem->description), 200) }}</p>
                     </div>
                 </a>
             @endforeach
