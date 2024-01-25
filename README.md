@@ -82,6 +82,39 @@ This project uses [Laravel Sail](https://laravel.com/docs/10.x/sail). The only r
     sail down
     ```
 
+## .env for production
+
+If you want to deploy the app to a production environment, you will need to set the following variables in the `.env` file:
+
+- `APP_ENV=production`
+- `APP_DEBUG=false`
+- `APP_URL=<your domain>`
+
+- You need to setup the database connection. You can use the following variables as a guide:
+
+    ```bash
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=laravel
+    DB_USERNAME=sail
+    DB_PASSWORD=password
+    ```
+
+- You can set the `FLARE_KEY` variable to enable [Laravel Flare](https://flare.laravel.com/). This is a service that allows you to monitor errors in your app. You can create an account [here](https://flare.laravel.com/).
+
+- You need to setup the mail server. Change the MAIL variables according to your mail server configuration.
+
+- It's recommended that you configure the queue driver in order to send emails asynchronously. Do the proper configurations in your server and set the `QUEUE_CONNECTION` accordingly.
+
+- The project code is prepared to do periodic backups. You need to do the proper configurations in your server scheduler. Use this command as an example:
+
+    ```bash
+    php8.2 /home/forge/proj.fvaldes.live/artisan schedule:run
+    ```
+
+    Also, change the AWS variables to match your S3 bucket configuration where the backups will go.
+
 ## Debugging
 
 - You can use [Ray](https://myray.app/) to debug the app. The necessary dependencies are already installed.
